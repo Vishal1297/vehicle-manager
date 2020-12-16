@@ -1,3 +1,3 @@
 # fretron-vehicle-manager
 
-Apache Kafka Project Using Java
+A Vehicle Manager Project Using Java + Kotlin
