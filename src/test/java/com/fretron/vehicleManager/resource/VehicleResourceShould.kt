@@ -6,14 +6,15 @@ import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import org.codehaus.jackson.map.ObjectMapper
-import org.codehaus.jettison.json.JSONObject
 import org.glassfish.jersey.server.ResourceConfig
 import org.glassfish.jersey.test.JerseyTest
+import org.json.JSONObject
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import javax.ws.rs.client.Entity
 import javax.ws.rs.core.Application
 import javax.ws.rs.core.MediaType
+import javax.ws.rs.core.Response
 
 class VehicleResourceShould : JerseyTest() {
 
@@ -37,23 +38,21 @@ class VehicleResourceShould : JerseyTest() {
         val vehicleRequest = TestDataSource.createVehicleRequest()
         whenever(vehicleServiceImpl.createVehicle(any())).thenReturn(TestDataSource.getVehicle())
         val response =
-            target("$baseUrl/vehicle").request().post(Entity.entity(vehicleRequest, MediaType.APPLICATION_JSON_TYPE))
+            target("$baseUrl/vehicle").request().post(Entity.entity(vehicleRequest, MediaType.APPLICATION_JSON))
         assertTrue(response.status == 200)
-        val data = (response.readEntity(String::class.java))
-        println(data)
-        val responseJson = JSONObject(data)
-        println("return_200_after_create_vehicle :: $responseJson")
-        uuid = responseJson.getJSONObject("data").getString("uuid")
+        println("return_200_after_create_vehicle :: $response")
+        uuid = "c70534f9-10fe-41d6-afbc-863d1004c68d"
         println("uuid :: $uuid")
     }
 
     @Test
     fun return_200_after_get_vehicle_by_uuid() {
         return_200_after_create_vehicle()
-        val response = target("$baseUrl/device/$uuid").request().get()
+        val response = target("$baseUrl/vehicle/").queryParam("uuid", uuid).request().get()
         println("\nresponse is $response")
         assertTrue("return_200_after_get_vehicle_by_uuid :: ", response.status == 200)
-        println("return_200_after_get_vehicle_by_uuid :: ${response.readEntity(String::class.java)}")
+//        val responseJson = JSONObject(response.readEntity(String::class.java))
+//        println("return_200_after_get_vehicle_by_uuid :: $responseJson")
     }
 
     @Test
@@ -61,9 +60,9 @@ class VehicleResourceShould : JerseyTest() {
         whenever(vehicleServiceImpl.getAllVehicles()).thenReturn(
             listOf(TestDataSource.getVehicle())
         )
-        val response = target("$baseUrl/vehicles").request().get()
-        println("return_200_after_get_all_vehicles :: $response.readEntity(String::class.java)")
-        assert(response.status==200)
+        val response: Response = target("$baseUrl/vehicles").request().get()
+        assertTrue("return_200_after_get_all_vehicles :: ", response.status == 200)
+        println("return_200_after_get_all_vehicles :: ${JSONObject(response)}")
     }
 
     @Test
@@ -74,17 +73,18 @@ class VehicleResourceShould : JerseyTest() {
         testData.remove("uuid")
         testData.put("uuid", uuid)
         val response =
-            target("$baseUrl/vehicle").request().put(Entity.entity(testData.toString(), MediaType.APPLICATION_JSON))
+            target("$baseUrl/vehicle").queryParam("uuid", uuid).request()
+                .put(Entity.entity(testData.toString(), MediaType.APPLICATION_JSON))
         println("response is $response")
         assertTrue("return_200_after_update_vehicle", response.status == 200)
     }
 
     @Test
-    fun return_200_after_delete_device_by_uuid() {
+    fun return_200_after_delete_vehicle_by_uuid() {
         return_200_after_get_vehicle_by_uuid()
         val deletedData = TestDataSource.createVehicleRequest()
-        println("\nreturn_200_after_delete_devices :: $deletedData")
-        val response = target("$baseUrl/devices/$uuid").request().delete()
+        println("\nreturn_200_after_delete_vehicle_by_uuid :: $deletedData")
+        val response = target("$baseUrl/vehicle").queryParam("uuid", uuid).request().delete()
         print("\nreturn_200_after_delete_device :: $response")
         assertTrue("return_200_after_delete_device_by_uuid :: ", response.status == 200)
     }

@@ -6,8 +6,7 @@ import javax.inject.Inject
 import javax.inject.Named
 
 class VehicleRepositoryImpl
-@Inject constructor(@Named("objectMapper") private val objectMapper: ObjectMapper) : VehicleRepository
-{
+@Inject constructor(@Named("objectMapper") private val objectMapper: ObjectMapper) : VehicleRepository {
 
     override fun createVehicle(vehicle: String): Vehicle = Vehicle()
 

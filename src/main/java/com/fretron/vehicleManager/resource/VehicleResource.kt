@@ -19,21 +19,23 @@ class VehicleResource @Inject constructor(
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     fun addVehicle(request: String): String {
+        vehicleServiceImpl.createVehicle(request)
         return Response.ok().toString()
     }
 
     @GET
     @Path("/vehicle")
     @Produces(MediaType.APPLICATION_JSON)
-    fun getVehicle(@QueryParam("id") id: String): String {
+    fun getVehicle(@QueryParam("uuid") id: String): String {
+        vehicleServiceImpl.getVehicle(id)
         return Response.ok().toString()
     }
 
     @GET
     @Path("/vehicles")
     @Produces(MediaType.APPLICATION_JSON)
-    fun getAllVehicles() : String {
-        println("getAllVehicles :: ok")
+    fun getAllVehicles(): String {
+        vehicleServiceImpl.getAllVehicles()
         return Response.ok().toString()
     }
 
@@ -41,14 +43,16 @@ class VehicleResource @Inject constructor(
     @Path("/vehicle")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    fun updateVehicle(@QueryParam("id") id: String, request: String): String {
+    fun updateVehicle(@QueryParam("uuid") id: String, request: String): String {
+        vehicleServiceImpl.updateVehicle(id, request)
         return Response.ok().toString()
     }
 
     @DELETE
     @Path("/vehicle")
     @Produces(MediaType.APPLICATION_JSON)
-    fun removeVehicle(@QueryParam("id") id: String): String {
+    fun removeVehicle(@QueryParam("uuid") id: String): String {
+        vehicleServiceImpl.deleteVehicle(id)
         return Response.ok().toString()
     }
 

@@ -38,7 +38,7 @@
       "default": null
     },
     {
-      "name": "chasisType",
+      "name": "chassisType",
       "type": [
         "null",
         "string"
@@ -46,7 +46,7 @@
       "default": null
     },
     {
-      "name": "carringCapacity",
+      "name": "carryingCapacity",
       "type": [
         "null",
         "string"

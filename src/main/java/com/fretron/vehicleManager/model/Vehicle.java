@@ -10,8 +10,8 @@ import org.apache.avro.specific.SpecificData;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Vehicle extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-    public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Vehicle\",\"namespace\":\"com.fretron.vehicleManager.model\",\"fields\":[{\"name\":\"uuid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"registrationNumber\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"driverName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"bodyType\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"chasisType\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"carringCapacity\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
-    private static final long serialVersionUID = -9081059073408862858L;
+    public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Vehicle\",\"namespace\":\"com.fretron.vehicleManager.model\",\"fields\":[{\"name\":\"uuid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"registrationNumber\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"driverName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"bodyType\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"chassisType\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"carryingCapacity\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
+    private static final long serialVersionUID = -6905362567349263248L;
     private static final org.apache.avro.io.DatumWriter
             WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);
     private static final org.apache.avro.io.DatumReader
@@ -25,9 +25,9 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
     @Deprecated
     public java.lang.String bodyType;
     @Deprecated
-    public java.lang.String chasisType;
+    public java.lang.String chassisType;
     @Deprecated
-    public java.lang.String carringCapacity;
+    public java.lang.String carryingCapacity;
 
     /**
      * Default constructor.  Note that this does not initialize fields
@@ -44,16 +44,16 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
      * @param registrationNumber The new value for registrationNumber
      * @param driverName         The new value for driverName
      * @param bodyType           The new value for bodyType
-     * @param chasisType         The new value for chasisType
-     * @param carringCapacity    The new value for carringCapacity
+     * @param chassisType        The new value for chassisType
+     * @param carryingCapacity   The new value for carryingCapacity
      */
-    public Vehicle(java.lang.String uuid, java.lang.String registrationNumber, java.lang.String driverName, java.lang.String bodyType, java.lang.String chasisType, java.lang.String carringCapacity) {
+    public Vehicle(java.lang.String uuid, java.lang.String registrationNumber, java.lang.String driverName, java.lang.String bodyType, java.lang.String chassisType, java.lang.String carryingCapacity) {
         this.uuid = uuid;
         this.registrationNumber = registrationNumber;
         this.driverName = driverName;
         this.bodyType = bodyType;
-        this.chasisType = chasisType;
-        this.carringCapacity = carringCapacity;
+        this.chassisType = chassisType;
+        this.carryingCapacity = carryingCapacity;
     }
 
     public static org.apache.avro.Schema getClassSchema() {
@@ -105,9 +105,9 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
             case 3:
                 return bodyType;
             case 4:
-                return chasisType;
+                return chassisType;
             case 5:
-                return carringCapacity;
+                return carryingCapacity;
             default:
                 throw new org.apache.avro.AvroRuntimeException("Bad index");
         }
@@ -130,10 +130,10 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
                 bodyType = (java.lang.String) value$;
                 break;
             case 4:
-                chasisType = (java.lang.String) value$;
+                chassisType = (java.lang.String) value$;
                 break;
             case 5:
-                carringCapacity = (java.lang.String) value$;
+                carryingCapacity = (java.lang.String) value$;
                 break;
             default:
                 throw new org.apache.avro.AvroRuntimeException("Bad index");
@@ -213,39 +213,39 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
     }
 
     /**
-     * Gets the value of the 'chasisType' field.
+     * Gets the value of the 'chassisType' field.
      *
-     * @return The value of the 'chasisType' field.
+     * @return The value of the 'chassisType' field.
      */
-    public java.lang.String getChasisType() {
-        return chasisType;
+    public java.lang.String getChassisType() {
+        return chassisType;
     }
 
     /**
-     * Sets the value of the 'chasisType' field.
+     * Sets the value of the 'chassisType' field.
      *
      * @param value the value to set.
      */
-    public void setChasisType(java.lang.String value) {
-        this.chasisType = value;
+    public void setChassisType(java.lang.String value) {
+        this.chassisType = value;
     }
 
     /**
-     * Gets the value of the 'carringCapacity' field.
+     * Gets the value of the 'carryingCapacity' field.
      *
-     * @return The value of the 'carringCapacity' field.
+     * @return The value of the 'carryingCapacity' field.
      */
-    public java.lang.String getCarringCapacity() {
-        return carringCapacity;
+    public java.lang.String getCarryingCapacity() {
+        return carryingCapacity;
     }
 
     /**
-     * Sets the value of the 'carringCapacity' field.
+     * Sets the value of the 'carryingCapacity' field.
      *
      * @param value the value to set.
      */
-    public void setCarringCapacity(java.lang.String value) {
-        this.carringCapacity = value;
+    public void setCarryingCapacity(java.lang.String value) {
+        this.carryingCapacity = value;
     }
 
     @Override
@@ -270,8 +270,8 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
         private java.lang.String registrationNumber;
         private java.lang.String driverName;
         private java.lang.String bodyType;
-        private java.lang.String chasisType;
-        private java.lang.String carringCapacity;
+        private java.lang.String chassisType;
+        private java.lang.String carryingCapacity;
 
         /**
          * Creates a new Builder
@@ -303,12 +303,12 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
                 this.bodyType = data().deepCopy(fields()[3].schema(), other.bodyType);
                 fieldSetFlags()[3] = true;
             }
-            if (isValidValue(fields()[4], other.chasisType)) {
-                this.chasisType = data().deepCopy(fields()[4].schema(), other.chasisType);
+            if (isValidValue(fields()[4], other.chassisType)) {
+                this.chassisType = data().deepCopy(fields()[4].schema(), other.chassisType);
                 fieldSetFlags()[4] = true;
             }
-            if (isValidValue(fields()[5], other.carringCapacity)) {
-                this.carringCapacity = data().deepCopy(fields()[5].schema(), other.carringCapacity);
+            if (isValidValue(fields()[5], other.carryingCapacity)) {
+                this.carryingCapacity = data().deepCopy(fields()[5].schema(), other.carryingCapacity);
                 fieldSetFlags()[5] = true;
             }
         }
@@ -336,12 +336,12 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
                 this.bodyType = data().deepCopy(fields()[3].schema(), other.bodyType);
                 fieldSetFlags()[3] = true;
             }
-            if (isValidValue(fields()[4], other.chasisType)) {
-                this.chasisType = data().deepCopy(fields()[4].schema(), other.chasisType);
+            if (isValidValue(fields()[4], other.chassisType)) {
+                this.chassisType = data().deepCopy(fields()[4].schema(), other.chassisType);
                 fieldSetFlags()[4] = true;
             }
-            if (isValidValue(fields()[5], other.carringCapacity)) {
-                this.carringCapacity = data().deepCopy(fields()[5].schema(), other.carringCapacity);
+            if (isValidValue(fields()[5], other.carryingCapacity)) {
+                this.carryingCapacity = data().deepCopy(fields()[5].schema(), other.carryingCapacity);
                 fieldSetFlags()[5] = true;
             }
         }
@@ -519,87 +519,87 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
         }
 
         /**
-         * Gets the value of the 'chasisType' field.
+         * Gets the value of the 'chassisType' field.
          *
          * @return The value.
          */
-        public java.lang.String getChasisType() {
-            return chasisType;
+        public java.lang.String getChassisType() {
+            return chassisType;
         }
 
         /**
-         * Sets the value of the 'chasisType' field.
+         * Sets the value of the 'chassisType' field.
          *
-         * @param value The value of 'chasisType'.
+         * @param value The value of 'chassisType'.
          * @return This builder.
          */
-        public com.fretron.vehicleManager.model.Vehicle.Builder setChasisType(java.lang.String value) {
+        public com.fretron.vehicleManager.model.Vehicle.Builder setChassisType(java.lang.String value) {
             validate(fields()[4], value);
-            this.chasisType = value;
+            this.chassisType = value;
             fieldSetFlags()[4] = true;
             return this;
         }
 
         /**
-         * Checks whether the 'chasisType' field has been set.
+         * Checks whether the 'chassisType' field has been set.
          *
-         * @return True if the 'chasisType' field has been set, false otherwise.
+         * @return True if the 'chassisType' field has been set, false otherwise.
          */
-        public boolean hasChasisType() {
+        public boolean hasChassisType() {
             return fieldSetFlags()[4];
         }
 
 
         /**
-         * Clears the value of the 'chasisType' field.
+         * Clears the value of the 'chassisType' field.
          *
          * @return This builder.
          */
-        public com.fretron.vehicleManager.model.Vehicle.Builder clearChasisType() {
-            chasisType = null;
+        public com.fretron.vehicleManager.model.Vehicle.Builder clearChassisType() {
+            chassisType = null;
             fieldSetFlags()[4] = false;
             return this;
         }
 
         /**
-         * Gets the value of the 'carringCapacity' field.
+         * Gets the value of the 'carryingCapacity' field.
          *
          * @return The value.
          */
-        public java.lang.String getCarringCapacity() {
-            return carringCapacity;
+        public java.lang.String getCarryingCapacity() {
+            return carryingCapacity;
         }
 
         /**
-         * Sets the value of the 'carringCapacity' field.
+         * Sets the value of the 'carryingCapacity' field.
          *
-         * @param value The value of 'carringCapacity'.
+         * @param value The value of 'carryingCapacity'.
          * @return This builder.
          */
-        public com.fretron.vehicleManager.model.Vehicle.Builder setCarringCapacity(java.lang.String value) {
+        public com.fretron.vehicleManager.model.Vehicle.Builder setCarryingCapacity(java.lang.String value) {
             validate(fields()[5], value);
-            this.carringCapacity = value;
+            this.carryingCapacity = value;
             fieldSetFlags()[5] = true;
             return this;
         }
 
         /**
-         * Checks whether the 'carringCapacity' field has been set.
+         * Checks whether the 'carryingCapacity' field has been set.
          *
-         * @return True if the 'carringCapacity' field has been set, false otherwise.
+         * @return True if the 'carryingCapacity' field has been set, false otherwise.
          */
-        public boolean hasCarringCapacity() {
+        public boolean hasCarryingCapacity() {
             return fieldSetFlags()[5];
         }
 
 
         /**
-         * Clears the value of the 'carringCapacity' field.
+         * Clears the value of the 'carryingCapacity' field.
          *
          * @return This builder.
          */
-        public com.fretron.vehicleManager.model.Vehicle.Builder clearCarringCapacity() {
-            carringCapacity = null;
+        public com.fretron.vehicleManager.model.Vehicle.Builder clearCarryingCapacity() {
+            carryingCapacity = null;
             fieldSetFlags()[5] = false;
             return this;
         }
@@ -612,8 +612,8 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
                 record.registrationNumber = fieldSetFlags()[1] ? this.registrationNumber : (java.lang.String) defaultValue(fields()[1]);
                 record.driverName = fieldSetFlags()[2] ? this.driverName : (java.lang.String) defaultValue(fields()[2]);
                 record.bodyType = fieldSetFlags()[3] ? this.bodyType : (java.lang.String) defaultValue(fields()[3]);
-                record.chasisType = fieldSetFlags()[4] ? this.chasisType : (java.lang.String) defaultValue(fields()[4]);
-                record.carringCapacity = fieldSetFlags()[5] ? this.carringCapacity : (java.lang.String) defaultValue(fields()[5]);
+                record.chassisType = fieldSetFlags()[4] ? this.chassisType : (java.lang.String) defaultValue(fields()[4]);
+                record.carryingCapacity = fieldSetFlags()[5] ? this.carryingCapacity : (java.lang.String) defaultValue(fields()[5]);
                 return record;
             } catch (Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
