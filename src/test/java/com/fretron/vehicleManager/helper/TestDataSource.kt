@@ -46,4 +46,16 @@ object TestDataSource {
                 "}"
     }
 
+    fun getUpdatedVehicle(): Vehicle {
+        val jsonString = "{\n" +
+                "    \"uuid\": \"c70034f9-10fe-41d6-afbc-863d1994c68d\",\n" +
+                "    \"registrationNumber\": \"11\",\n" +
+                "    \"driverName\": \"Driver Name\",\n" +
+                "    \"bodyType\": \"Type-1\",\n" +
+                "    \"chassisType\": \"Type-2\",\n" +
+                "    \"carryingCapacity\": \"40\"\n" +
+                "}"
+        return objectMapper.readValue(jsonString, Vehicle::class.java)
+    }
+
 }

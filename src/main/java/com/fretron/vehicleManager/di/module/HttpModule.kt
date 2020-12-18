@@ -18,7 +18,11 @@ class HttpModule {
     }
 
     @Provides
-    fun providesServer(@Named("host.url") host: String, @Named("host.port") port: Int, config: ResourceConfig): HttpServer {
+    fun providesServer(
+        @Named("host.url") host: String,
+        @Named("host.port") port: Int,
+        config: ResourceConfig
+    ): HttpServer {
         val url = UriBuilder.fromUri(host).port(port).build()
         return GrizzlyHttpServerFactory.createHttpServer(
             url,
