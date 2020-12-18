@@ -6,24 +6,14 @@ import javax.inject.Inject
 import javax.inject.Named
 
 class VehicleServiceImpl
-@Inject constructor(@Named("vehicleRepositoryImpl") vehicleRepository: VehicleRepository) : VehicleService {
-    override fun createVehicle(vehicle: String): Vehicle {
-        return Vehicle()
-    }
+@Inject constructor(private val vehicleRepository: VehicleRepository) : VehicleService {
+    override fun createVehicle(vehicle: Vehicle): Vehicle = vehicleRepository.createVehicle(vehicle)
 
-    override fun getVehicle(id: String): Vehicle {
-        return Vehicle()
-    }
+    override fun getVehicle(id: String): Vehicle = vehicleRepository.getVehicle(id)
 
-    override fun getAllVehicles(): List<Vehicle> {
-        return listOf()
-    }
+    override fun getAllVehicles(): List<Vehicle> = vehicleRepository.getAllVehicles()
 
-    override fun updateVehicle(id: String, vehicle: String): Vehicle {
-        return Vehicle()
-    }
+    override fun updateVehicle(id: String, vehicle: Vehicle): Vehicle = vehicleRepository.updateVehicle(id, vehicle)
 
-    override fun deleteVehicle(id: String): Vehicle {
-        return Vehicle()
-    }
+    override fun deleteVehicle(id: String): Vehicle = vehicleRepository.deleteVehicle(id)
 }

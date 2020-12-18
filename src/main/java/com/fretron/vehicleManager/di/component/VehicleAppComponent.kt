@@ -5,7 +5,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ConfigModule::class, HttpModule::class, ServiceModule::class, RepositoryModule::class, SchemaModule::class])
+@Component(modules = [ConfigModule::class, HttpModule::class, ResourceModule::class, ServiceModule::class, RepositoryModule::class, SchemaModule::class])
 interface VehicleAppComponent {
 
 }

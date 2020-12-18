@@ -1,5 +1,6 @@
 package com.fretron.vehicleManager.resource
 
+import com.fretron.vehicleManager.model.Vehicle
 import com.fretron.vehicleManager.service.VehicleService
 import org.codehaus.jackson.map.ObjectMapper
 import javax.inject.Inject
@@ -10,50 +11,51 @@ import javax.ws.rs.core.Response
 
 @Path("/vehicles/v1")
 class VehicleResource @Inject constructor(
-    @Named("objectMapper") private val objectMapper: ObjectMapper,
-    @Named("vehicleServiceImpl") private val vehicleServiceImpl: VehicleService
+    private val objectMapper: ObjectMapper,
+    private val vehicleServiceImpl: VehicleService
 ) {
 
     @POST
     @Path("/vehicle")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    fun addVehicle(request: String): String {
-        vehicleServiceImpl.createVehicle(request)
-        return Response.ok().toString()
+    fun addVehicle(request: String): Response {
+        val vehicle = vehicleServiceImpl.createVehicle(objectMapper.readValue(request, Vehicle::class.java))
+//        println("addVehicle Resource $vehicle")
+        return Response.ok(vehicle.toString()).build()
     }
 
     @GET
     @Path("/vehicle")
     @Produces(MediaType.APPLICATION_JSON)
-    fun getVehicle(@QueryParam("uuid") id: String): String {
-        vehicleServiceImpl.getVehicle(id)
-        return Response.ok().toString()
+    fun getVehicle(@QueryParam("uuid") id: String): Response {
+        val vehicle = vehicleServiceImpl.getVehicle(id)
+        return Response.ok().build()
     }
 
     @GET
     @Path("/vehicles")
     @Produces(MediaType.APPLICATION_JSON)
-    fun getAllVehicles(): String {
-        vehicleServiceImpl.getAllVehicles()
-        return Response.ok().toString()
+    fun getAllVehicles(): Response {
+        val vehicle = vehicleServiceImpl.getAllVehicles()
+        return Response.ok().build()
     }
 
     @PUT
     @Path("/vehicle")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    fun updateVehicle(@QueryParam("uuid") id: String, request: String): String {
-        vehicleServiceImpl.updateVehicle(id, request)
-        return Response.ok().toString()
+    fun updateVehicle(@QueryParam("uuid") id: String, request: String): Response {
+        val vehicle = vehicleServiceImpl.updateVehicle(id, objectMapper.readValue(request, Vehicle::class.java))
+        return Response.ok().build()
     }
 
     @DELETE
     @Path("/vehicle")
     @Produces(MediaType.APPLICATION_JSON)
-    fun removeVehicle(@QueryParam("uuid") id: String): String {
-        vehicleServiceImpl.deleteVehicle(id)
-        return Response.ok().toString()
+    fun removeVehicle(@QueryParam("uuid") id: String): Response {
+        val vehicle = vehicleServiceImpl.deleteVehicle(id)
+        return Response.ok().build()
     }
 
 }

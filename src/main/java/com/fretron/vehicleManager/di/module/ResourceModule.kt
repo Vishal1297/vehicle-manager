@@ -5,7 +5,6 @@ import com.fretron.vehicleManager.service.VehicleService
 import dagger.Module
 import dagger.Provides
 import org.codehaus.jackson.map.ObjectMapper
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -13,9 +12,9 @@ class ResourceModule {
 
     @Singleton
     @Provides
-    fun provideVehicleResource(
-        @Named("objectMapper") objectMapper: ObjectMapper,
-        @Named("vehicleServiceImpl") vehicleServiceImpl: VehicleService
+    fun providesVehicleResource(
+        objectMapper: ObjectMapper,
+        vehicleServiceImpl: VehicleService
     ): VehicleResource {
         return VehicleResource(objectMapper, vehicleServiceImpl)
     }

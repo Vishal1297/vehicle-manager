@@ -12,13 +12,13 @@ class ConfigModule {
 
     @Provides
     @Named("host.url")
-    fun provideHost(): String {
+    fun providesHost(): String {
         return HOST_NAME
     }
 
     @Provides
     @Named("host.port")
-    fun providePort(): Int {
+    fun providesPort(): Int {
         return PORT
     }
 

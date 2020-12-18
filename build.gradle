@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.4.10'
+    ext.kotlin_version = '1.4.21'
     repositories {
         mavenCentral()
     }
@@ -10,8 +10,8 @@ buildscript {
 
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
-    id "org.jetbrains.kotlin.kapt" version '1.4.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.21'
+    id "org.jetbrains.kotlin.kapt" version '1.4.21'
 //    id "com.commercehub.gradle.plugin.avro" version "0.9.1"
 }
 
@@ -21,7 +21,7 @@ version '1.0'
 sourceCompatibility = 1.8
 
 ext {
-    kotlin_version = "1.4.10"
+    kotlin_version = "1.4.21"
     jerseyVersion = "2.32"
     kafkaVersion = "2.6.0"
     daggerVersion = "2.30"
@@ -58,7 +58,7 @@ dependencies {
     implementation group: 'org.json', name: 'json', version: '20190722'
     implementation "com.google.code.gson:gson:2.8.5"
     // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
-    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 
     // https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-avro:2.12.0'

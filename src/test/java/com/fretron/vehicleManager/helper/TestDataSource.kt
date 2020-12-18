@@ -37,7 +37,7 @@ object TestDataSource {
 
     fun updateVehicleRequest(): String {
         return "{\n" +
-                "    \"uuid\": \"c70534f9-10fe-41d6-afbc-863d1004c68d\",\n" +
+                "    \"uuid\": \"c70034f9-10fe-41d6-afbc-863d1994c68d\",\n" +
                 "    \"registrationNumber\": \"11\",\n" +
                 "    \"driverName\": \"Driver Name\",\n" +
                 "    \"bodyType\": \"Type-1\",\n" +
