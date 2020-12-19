@@ -14,7 +14,7 @@ object TestDataSource {
 
     fun createVehicleRequest(): String {
         return "{\n" +
-                "    \"uuid\": \"c70534f9-10fe-41d6-afbc-863d1984c68d\",\n" +
+                "    \"uuid\": \"1a1c5fe5-3ee0-453d-8425-5fec44961029\",\n" +
                 "    \"registrationNumber\": \"11\",\n" +
                 "    \"driverName\": \"Driver Name\",\n" +
                 "    \"bodyType\": \"Type-1\",\n" +
@@ -25,7 +25,7 @@ object TestDataSource {
 
     fun getVehicle(): Vehicle {
         val jsonString = "{\n" +
-                "    \"uuid\": \"c70534f9-10fe-41d6-afbc-863d1984c68d\",\n" +
+                "    \"uuid\": \"1a1c5fe5-3ee0-453d-8425-5fec44961029\",\n" +
                 "    \"registrationNumber\": \"11\",\n" +
                 "    \"driverName\": \"Driver Name\",\n" +
                 "    \"bodyType\": \"Type-1\",\n" +
@@ -48,7 +48,7 @@ object TestDataSource {
 
     fun getUpdatedVehicle(): Vehicle {
         val jsonString = "{\n" +
-                "    \"uuid\": \"c70034f9-10fe-41d6-afbc-863d1994c68d\",\n" +
+                "    \"uuid\": \"c79934f9-10fe-41d6-afbc-863d1994c68d\",\n" +
                 "    \"registrationNumber\": \"11\",\n" +
                 "    \"driverName\": \"Driver Name\",\n" +
                 "    \"bodyType\": \"Type-1\",\n" +

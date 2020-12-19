@@ -1,7 +1,7 @@
 package com.fretron.vehicleManager.di.module
 
 import com.fretron.vehicleManager.resource.VehicleResource
-import com.fretron.vehicleManager.service.VehicleService
+import com.fretron.vehicleManager.service.VehicleServiceImpl
 import dagger.Module
 import dagger.Provides
 import org.codehaus.jackson.map.ObjectMapper
@@ -14,7 +14,7 @@ class ResourceModule {
     @Provides
     fun providesVehicleResource(
         objectMapper: ObjectMapper,
-        vehicleServiceImpl: VehicleService
+        vehicleServiceImpl: VehicleServiceImpl
     ): VehicleResource {
         return VehicleResource(objectMapper, vehicleServiceImpl)
     }

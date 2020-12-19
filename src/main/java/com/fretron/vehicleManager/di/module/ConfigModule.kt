@@ -1,5 +1,6 @@
 package com.fretron.vehicleManager.di.module
 
+import com.fretron.vehicleManager.AppConstants
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named
@@ -7,19 +8,22 @@ import javax.inject.Named
 @Module
 class ConfigModule {
 
-    private val HOST_NAME: String = "http://0.0.0.0"
-    private val PORT: Int = 8080
-
     @Provides
     @Named("host.url")
     fun providesHost(): String {
-        return HOST_NAME
+        return AppConstants.SERVER_HOST_NAME
     }
 
     @Provides
     @Named("host.port")
     fun providesPort(): Int {
-        return PORT
+        return AppConstants.SERVER_PORT
+    }
+
+    @Provides
+    @Named("vehicle.collection.name")
+    fun providesDatabaseName(): String {
+        return AppConstants.DB_COLLECTION_NAME
     }
 
 }

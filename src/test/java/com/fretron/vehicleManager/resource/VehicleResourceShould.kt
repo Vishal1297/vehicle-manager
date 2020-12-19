@@ -1,7 +1,9 @@
 package com.fretron.vehicleManager.resource
 
+import com.fretron.vehicleManager.AppConstants
 import com.fretron.vehicleManager.di.component.DaggerVehicleTestComponent
 import com.fretron.vehicleManager.helper.TestDataSource
+import com.fretron.vehicleManager.model.Vehicle
 import com.fretron.vehicleManager.service.VehicleServiceImpl
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -19,7 +21,7 @@ import javax.ws.rs.core.Response
 
 class VehicleResourceShould : JerseyTest() {
 
-    private val baseUrl = "/vehicles/v1"
+    private val baseUrl = AppConstants.BASE_URL
     private lateinit var uuid: String
     private lateinit var objectMapper: ObjectMapper
     private lateinit var vehicleServiceImpl: VehicleServiceImpl
@@ -42,13 +44,14 @@ class VehicleResourceShould : JerseyTest() {
         assertTrue("return_200_after_create_vehicle", response.status == 200)
         val responseJson = JSONObject(response.readEntity(String::class.java))
         uuid = responseJson.get("uuid").toString()
-        println("uuid :: $uuid")
+        println("return_200_after_create_vehicle ## uuid :: $uuid")
     }
 
     @Test
     fun return_200_after_get_vehicle_by_uuid() {
         return_200_after_create_vehicle()
         val response = target("$baseUrl/vehicle/").queryParam("uuid", uuid).request().get()
+        print(response)
         assertTrue("return_200_after_get_vehicle_by_uuid :: ", response.status == 200)
     }
 
@@ -58,6 +61,7 @@ class VehicleResourceShould : JerseyTest() {
             listOf(TestDataSource.getVehicle())
         )
         val response: Response = target("$baseUrl/vehicles").request().get()
+        print("return_200_after_get_all_vehicles :: $response")
         assertTrue("return_200_after_get_all_vehicles :: ", response.status == 200)
     }
 
