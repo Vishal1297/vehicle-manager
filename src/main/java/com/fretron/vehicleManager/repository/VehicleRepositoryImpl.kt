@@ -20,8 +20,6 @@ class VehicleRepositoryImpl
     @Named("vehicle.collection.name") private val vehicleCollectionName: String
 ) : VehicleRepository {
 
-
-
     @Throws(MongoDbException::class)
     override fun createVehicle(vehicle: Vehicle): Vehicle {
         val collection = database.getCollection(vehicleCollectionName)
@@ -37,7 +35,6 @@ class VehicleRepositoryImpl
 
     @Throws(MongoDbException::class)
     override fun getVehicle(id: String): Vehicle {
-        println("3 Repository")
         val collection = database.getCollection(vehicleCollectionName)
         val query = BasicDBObject()
         query["_id"] = id
@@ -51,7 +48,7 @@ class VehicleRepositoryImpl
         throw MongoDbException("Vehicle Not Found At UUID :: $id")
     }
 
-    @Throws(Exception::class)
+    @Throws(MongoDbException::class)
     override fun getAllVehicles(): List<Vehicle> {
         val vehicles: ArrayList<Vehicle> = ArrayList()
         val collection = database.getCollection(vehicleCollectionName)

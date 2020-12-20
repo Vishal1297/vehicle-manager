@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.4.20'
+    ext.kotlin_version = '1.4.21'
     repositories {
         mavenCentral()
     }
@@ -20,9 +20,8 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 ext {
-    kotlin_version = "1.4.20"
+    kotlin_version = "1.4.21"
     jerseyVersion = "2.32"
-    kafkaVersion = "2.6.0"
     daggerVersion = "2.30"
 }
 
@@ -42,8 +41,6 @@ dependencies {
 
     // Jersey
     implementation group: 'org.glassfish', name: 'javax.json', version: '1.1.4'
-    // https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client
-    implementation group: 'org.glassfish.jersey.core', name: 'jersey-client', version: jerseyVersion
     implementation group: 'org.glassfish.jersey.core', name: 'jersey-server', version: jerseyVersion
 
     // Jersey Grizzly Server
@@ -65,10 +62,6 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-avro:2.12.0'
-
-    // Apache Kafka
-//    implementation group: 'org.apache.kafka', name: 'kafka_2.13', version: kafkaVersion
-//    implementation "org.apache.kafka:kafka-clients:$kafkaVersion"
 
     // https://mvnrepository.com/artifact/com.google.dagger/dagger
     implementation group: 'com.google.dagger', name: 'dagger', version: daggerVersion
@@ -102,10 +95,10 @@ dependencies {
     // EmbeddedMongoDB
     testImplementation group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "2.0.3"
 
-//    // Logging
-//    implementation "org.slf4j:slf4j-simple:1.7.30"
-//    implementation "org.apache.logging.log4j:log4j-core:2.12.0"
-//    implementation "org.apache.logging.log4j:log4j-api:2.12.0"
+    // Logging
+    implementation "org.slf4j:slf4j-simple:1.7.30"
+    implementation "org.apache.logging.log4j:log4j-core:2.12.0"
+    implementation "org.apache.logging.log4j:log4j-api:2.12.0"
 }
 
 

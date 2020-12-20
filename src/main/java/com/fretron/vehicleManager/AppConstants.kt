@@ -19,5 +19,6 @@ object AppConstants {
     const val DB_COLLECTION_NAME = "vehicle"
     const val DB_HOST = "localhost"
     const val DB_PORT = 27017
+
 }
 
