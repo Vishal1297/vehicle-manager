@@ -1,6 +1,7 @@
 package com.fretron.vehicleManager.di.module
 
 import com.fretron.vehicleManager.AppConstants
+import com.fretron.vehicleManager.AppConstants.KEY_VEHICLE_COLLECTION_NAME
 import com.mongodb.MongoClient
 import com.mongodb.client.MongoDatabase
 import dagger.Module
@@ -20,7 +21,7 @@ open class DatabaseModule {
     @Provides
     fun provideDatabase(
         mongoClient: MongoClient,
-        @Named("vehicle.collection.name") collectionName: String
+        @Named(KEY_VEHICLE_COLLECTION_NAME) collectionName: String
     ): MongoDatabase {
         return mongoClient.getDatabase(collectionName)
     }

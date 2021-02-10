@@ -36,7 +36,6 @@ class VehicleResource @Inject constructor(
     @Path(AppConstants.VEHICLES)
     @Produces(MediaType.APPLICATION_JSON)
     fun getAllVehicles(): Response {
-        print("getAllVehicles :: ")
         val vehicles = vehicleServiceImpl.getAllVehicles()
         return Response.ok(vehicles.toString()).build()
     }

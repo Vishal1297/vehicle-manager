@@ -9,7 +9,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [ConfigModule::class, ResourceModule::class, ServiceModule::class, RepositoryModule::class,
+    modules = [ConfigModule::class, RepositoryModule::class,
         SchemaModule::class, DatabaseModule::class]
 )
 interface VehicleTestComponent {

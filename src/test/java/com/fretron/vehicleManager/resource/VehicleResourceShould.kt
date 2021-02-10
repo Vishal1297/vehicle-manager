@@ -56,6 +56,7 @@ class VehicleResourceShould : JerseyTest() {
         )
         val response = target("$baseUrl/vehicles").request().get()
         print("return_200_after_get_all_vehicles :: $response")
+        assertNotNull(response)
         assertTrue("return_200_after_get_all_vehicles :: ", response.status == 200)
     }
 

@@ -1,5 +1,8 @@
 package com.fretron.vehicleManager.di.module
 
+import com.fretron.vehicleManager.AppConstants.KEY_SERVER_HOST
+import com.fretron.vehicleManager.AppConstants.KEY_SERVER_PORT
+import com.fretron.vehicleManager.exceptions.mapper.FretronExceptionMapper
 import com.fretron.vehicleManager.resource.VehicleResource
 import dagger.Module
 import dagger.Provides
@@ -13,14 +16,19 @@ import javax.ws.rs.core.UriBuilder
 class HttpModule {
 
     @Provides
-    fun providesResourceConfig(vehicleResource: VehicleResource): ResourceConfig {
-        return ResourceConfig().register(vehicleResource)
+    fun providesResourceConfig(
+        vehicleResource: VehicleResource,
+        fretronExceptionMapper: FretronExceptionMapper
+    ): ResourceConfig {
+        return ResourceConfig()
+            .register(vehicleResource)
+            .register(fretronExceptionMapper)
     }
 
     @Provides
     fun providesServer(
-        @Named("host.url") host: String,
-        @Named("host.port") port: Int,
+        @Named(KEY_SERVER_HOST) host: String,
+        @Named(KEY_SERVER_PORT) port: Int,
         config: ResourceConfig
     ): HttpServer {
         val url = UriBuilder.fromUri(host).port(port).build()

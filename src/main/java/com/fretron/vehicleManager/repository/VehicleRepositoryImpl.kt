@@ -1,5 +1,6 @@
 package com.fretron.vehicleManager.repository
 
+import com.fretron.vehicleManager.AppConstants.KEY_VEHICLE_COLLECTION_NAME
 import com.fretron.vehicleManager.exceptions.MongoDbException
 import com.fretron.vehicleManager.model.Vehicle
 import com.mongodb.BasicDBObject
@@ -17,7 +18,7 @@ class VehicleRepositoryImpl
 @Inject constructor(
     private val objectMapper: ObjectMapper,
     private val database: MongoDatabase,
-    @Named("vehicle.collection.name") private val vehicleCollectionName: String
+    @Named(KEY_VEHICLE_COLLECTION_NAME) private val vehicleCollectionName: String
 ) : VehicleRepository {
 
     @Throws(MongoDbException::class)
@@ -26,7 +27,6 @@ class VehicleRepositoryImpl
         val document = Document.parse(vehicle.toString())
         document["_id"] = vehicle.getUuid()
         if (document == null) {
-            print("Vehicle Not Created :: $vehicle")
             throw MongoDbException("Vehicle Not Created")
         }
         collection.insertOne(document)
@@ -54,8 +54,8 @@ class VehicleRepositoryImpl
         val collection = database.getCollection(vehicleCollectionName)
         val mongoCursor = collection.find().iterator()
         while (mongoCursor.hasNext()) {
-            val doc = mongoCursor.next()
-            val json = JSON.serialize(doc)
+            val document = mongoCursor.next()
+            val json = JSON.serialize(document)
             val vehicle = objectMapper.readValue(json, Vehicle::class.java)
             vehicles.add(vehicle)
         }

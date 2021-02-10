@@ -5,9 +5,10 @@ import com.fretron.vehicleManager.model.Vehicle
 import com.fretron.vehicleManager.repository.VehicleRepository
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Named
 
 class VehicleServiceImpl
-@Inject constructor(private val vehicleRepository: VehicleRepository) {
+@Inject constructor(@Named("vehicleRepositoryImpl") private val vehicleRepository: VehicleRepository) {
 
     @Throws(FretronException::class)
     fun createVehicle(vehicle: Vehicle): Vehicle {
@@ -20,7 +21,6 @@ class VehicleServiceImpl
 
     @Throws(FretronException::class)
     fun getVehicle(id: String): Vehicle {
-        if (id.isEmpty()) throw FretronException("Invalid Vehicle Id : $id")
         return vehicleRepository.getVehicle(id)
     }
 

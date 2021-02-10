@@ -7,8 +7,8 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [ConfigModule::class, HttpModule::class, ResourceModule::class, ServiceModule::class,
-        RepositoryModule::class, SchemaModule::class, DatabaseModule::class]
+    modules = [ConfigModule::class, HttpModule::class,
+        SchemaModule::class, RepositoryModule::class, DatabaseModule::class]
 )
 interface VehicleAppComponent {
 

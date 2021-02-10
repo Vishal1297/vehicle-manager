@@ -21,7 +21,6 @@ class VehicleRepositoryShould {
 
     @Before
     fun configure() {
-
         startMongoDb()
         val mongoClient = MongoClient("localhost", embeddedMongoDb.port)
         database = mongoClient.getDatabase("vehicle")
