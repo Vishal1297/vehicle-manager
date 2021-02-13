@@ -1,6 +1,7 @@
 package com.fretron.vehicleManager.resource
 
 import com.fretron.vehicleManager.AppConstants
+import com.fretron.vehicleManager.exceptions.MappingException
 import com.fretron.vehicleManager.model.Vehicle
 import com.fretron.vehicleManager.service.VehicleServiceImpl
 import org.codehaus.jackson.map.ObjectMapper
@@ -15,12 +16,21 @@ class VehicleResource @Inject constructor(
     private val vehicleServiceImpl: VehicleServiceImpl
 ) {
 
+    @Throws(Exception::class)
+    fun <T> mapDataTo(data: String, valueType: Class<T>): T {
+        try {
+            return objectMapper.readValue(data, valueType)
+        } catch (e: Exception) {
+            throw MappingException("Unable to map request")
+        }
+    }
+
     @POST
     @Path(AppConstants.VEHICLE)
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     fun addVehicle(request: String): Response {
-        val vehicle = vehicleServiceImpl.createVehicle(objectMapper.readValue(request, Vehicle::class.java))
+        val vehicle = vehicleServiceImpl.createVehicle(mapDataTo(request, Vehicle::class.java))
         return Response.ok(vehicle.toString()).build()
     }
 
@@ -45,7 +55,7 @@ class VehicleResource @Inject constructor(
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     fun updateVehicle(@QueryParam(AppConstants.UUID) uuid: String, request: String): Response {
-        val vehicle = vehicleServiceImpl.updateVehicle(uuid, objectMapper.readValue(request, Vehicle::class.java))
+        val vehicle = vehicleServiceImpl.updateVehicle(uuid, mapDataTo(request, Vehicle::class.java))
         return Response.ok(vehicle.toString()).build()
     }
 

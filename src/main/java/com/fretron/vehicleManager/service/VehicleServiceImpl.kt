@@ -1,6 +1,7 @@
 package com.fretron.vehicleManager.service
 
 import com.fretron.vehicleManager.exceptions.FretronException
+import com.fretron.vehicleManager.exceptions.ResourceNotFoundException
 import com.fretron.vehicleManager.model.Vehicle
 import com.fretron.vehicleManager.repository.VehicleRepository
 import java.util.*
@@ -13,14 +14,14 @@ class VehicleServiceImpl
     @Throws(FretronException::class)
     fun createVehicle(vehicle: Vehicle): Vehicle {
         if (vehicle.getRegistrationNumber() == null || vehicle.getChassisType() == null) {
-            throw FretronException("Either Registration Or Chassis Number Is Invalid")
+            throw FretronException("Either Registration or Chassis Number is not provided")
         }
         vehicle.setUuid(UUID.randomUUID().toString())
         return vehicleRepository.createVehicle(vehicle)
     }
 
     @Throws(FretronException::class)
-    fun getVehicle(id: String): Vehicle {
+    fun getVehicle(id: String): Vehicle? {
         return vehicleRepository.getVehicle(id)
     }
 
@@ -29,10 +30,12 @@ class VehicleServiceImpl
 
     @Throws(FretronException::class)
     fun updateVehicle(id: String, vehicle: Vehicle): Vehicle {
-        if (id.isEmpty()) throw FretronException("Invalid Vehicle Id")
+        if (id.isEmpty()) throw FretronException("Invalid vehicle id")
         else if (vehicle.getRegistrationNumber() == null || vehicle.getChassisType() == null) {
-            throw FretronException("Either Registration Or Chassis Number Is Invalid")
+            throw FretronException("Either Registration Or Chassis Number is not provided")
         }
+        val vehicleFromDB = vehicleRepository.getVehicle(id)
+        vehicleFromDB?.getUuid() ?: throw ResourceNotFoundException("Vehicle not found at id : $id")
         return vehicleRepository.updateVehicle(id, vehicle)
     }
 

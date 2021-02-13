@@ -7,7 +7,7 @@ object AppConstants {
     const val ID = "id"
     const val NOT_FOUND = "NOT FOUND"
     const val INVALID_REQUEST = "INVALID REQUEST"
-    const val KEY_VEHICLE_COLLECTION_NAME = ""
+    const val KEY_VEHICLE_COLLECTION_NAME = "vehicle"
     const val KEY_SERVER_HOST = "host.url"
     const val KEY_SERVER_PORT = "host.port"
     const val SERVER_HOST_NAME = "http://0.0.0.0"
