@@ -32,7 +32,6 @@ class VehicleRepositoryImpl
 
     @Throws(MongoDbException::class)
     override fun createVehicle(vehicle: Vehicle): Vehicle {
-        val collection = database.getCollection(vehicleCollectionName)
         val document = Document.parse(vehicle.toString())
         document["_id"] = vehicle.getUuid()
         if (document == null) {

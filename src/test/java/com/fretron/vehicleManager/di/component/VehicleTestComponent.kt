@@ -1,6 +1,6 @@
 package com.fretron.vehicleManager.di.component
 
-import com.fretron.vehicleManager.di.module.*
+import com.fretron.vehicleManager.di.modules.*
 import com.fretron.vehicleManager.repository.VehicleRepositoryImpl
 import com.fretron.vehicleManager.service.VehicleServiceImpl
 import dagger.Component

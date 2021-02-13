@@ -1,4 +1,4 @@
-package com.fretron.vehicleManager.di.module
+package com.fretron.vehicleManager.di.modules
 
 import com.fretron.vehicleManager.AppConstants.KEY_SERVER_HOST
 import com.fretron.vehicleManager.AppConstants.KEY_SERVER_PORT

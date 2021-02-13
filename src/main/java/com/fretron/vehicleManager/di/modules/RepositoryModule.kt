@@ -1,16 +1,13 @@
-package com.fretron.vehicleManager.di.module
+package com.fretron.vehicleManager.di.modules
 
 import com.fretron.vehicleManager.AppConstants
 import com.fretron.vehicleManager.repository.VehicleRepository
 import com.fretron.vehicleManager.repository.VehicleRepositoryImpl
-import com.fretron.vehicleManager.resource.VehicleResource
-import com.fretron.vehicleManager.service.VehicleServiceImpl
 import com.mongodb.client.MongoDatabase
 import dagger.Module
 import dagger.Provides
 import org.codehaus.jackson.map.ObjectMapper
 import javax.inject.Named
-import javax.inject.Singleton
 
 @Module
 class RepositoryModule {

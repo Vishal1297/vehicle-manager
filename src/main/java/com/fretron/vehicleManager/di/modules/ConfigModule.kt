@@ -1,4 +1,4 @@
-package com.fretron.vehicleManager.di.module
+package com.fretron.vehicleManager.di.modules
 
 import com.fretron.vehicleManager.AppConstants
 import dagger.Module
