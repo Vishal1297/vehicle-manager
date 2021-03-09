@@ -35,7 +35,8 @@ class VehicleResourceShould : JerseyTest() {
     fun return_200_after_create_vehicle() {
         val vehicleRequest = TestDataSource.createVehicleRequest()
         whenever(vehicleServiceImpl.createVehicle(any())).thenReturn(TestDataSource.getVehicle())
-        val response = target("$baseUrl/vehicle").request().post(Entity.entity(vehicleRequest, MediaType.APPLICATION_JSON))
+        val response =
+            target("$baseUrl/vehicle").request().post(Entity.entity(vehicleRequest, MediaType.APPLICATION_JSON))
         assertTrue("return_200_after_create_vehicle", response.status == 200)
         val responseJson = JSONObject(response.readEntity(String::class.java))
         uuid = responseJson.get("uuid").toString()

@@ -59,7 +59,8 @@ class VehicleServiceShould {
     fun updateVehicleTest() {
         getVehicleTest()
         val vehicle = TestDataSource.getUpdatedVehicle()
-        whenever(vehicleRepository.updateVehicle(uuid, vehicle)
+        whenever(
+            vehicleRepository.updateVehicle(uuid, vehicle)
         ).thenReturn(TestDataSource.getVehicle())
         val updatedVehicle = classUnderTest.updateVehicle(uuid, vehicle)
         assertNotNull(updatedVehicle)
@@ -69,7 +70,8 @@ class VehicleServiceShould {
     @Test
     fun deleteVehicleTest() {
         getVehicleTest()
-        whenever(vehicleRepository.deleteVehicle(uuid)
+        whenever(
+            vehicleRepository.deleteVehicle(uuid)
         ).thenReturn(TestDataSource.getVehicle())
         val deletedVehicle = classUnderTest.deleteVehicle(uuid)
         assertNotNull(deletedVehicle)

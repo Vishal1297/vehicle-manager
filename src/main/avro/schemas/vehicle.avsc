@@ -8,8 +8,7 @@
       "type": [
         "null",
         "string"
-      ],
-      "default": null
+      ]
     },
     {
       "name": "registrationNumber",

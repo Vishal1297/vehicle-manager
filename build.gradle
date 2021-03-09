@@ -8,9 +8,13 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'kotlin'
+plugins {
+    id 'java'
+    id 'maven'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.30'
+    id "com.github.davidmc24.gradle.plugin.avro-base" version "1.0.0"
+}
+
 apply plugin: 'kotlin-kapt'
 
 group 'com.fretron.vehicleManager'
@@ -99,6 +103,43 @@ dependencies {
     implementation "org.slf4j:slf4j-simple:1.7.30"
     implementation "org.apache.logging.log4j:log4j-core:2.12.0"
     implementation "org.apache.logging.log4j:log4j-api:2.12.0"
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Common',
+                'Implementation-Version': version,
+                'Main-Class': 'integrationTests.CommonRunner'
+    }
+    baseName = project.name + '-all'
+    from sourceSets.test.output
+    //collect all dependencies
+    from { configurations.testRuntime.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+    exclude('META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA')
+}
+
+task renewAvro {
+    doLast {
+        delete "src/main/java/com.fretron.vehicleManager/model"
+        copy {
+            from "build/avro/com.fretron.vehicleManager/model"
+            into "src/main/java/com.fretron.vehicleManager/model"
+        }
+    }
+}
+
+task generateAvro(type: com.github.davidmc24.gradle.plugin.avro.GenerateAvroJavaTask) {
+    source("src/main/avro")
+    include("**/**/*.avsc")
+    outputDir = file("src/main/java")
+}
+
+renewAvro.dependsOn generateAvro
+build.dependsOn renewAvro
+
+avro {
+    fieldVisibility = "PRIVATE"
 }
 
 kapt.includeCompileClasspath = false

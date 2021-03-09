@@ -13,7 +13,7 @@ class VehicleServiceImpl
 
     @Throws(FretronException::class)
     fun createVehicle(vehicle: Vehicle): Vehicle {
-        if (vehicle.getRegistrationNumber() == null || vehicle.getChassisType() == null) {
+        if (vehicle.registrationNumber == null || vehicle.chassisType == null) {
             throw FretronException("Either Registration or Chassis Number is not provided")
         }
         vehicle.setUuid(UUID.randomUUID().toString())
@@ -31,11 +31,11 @@ class VehicleServiceImpl
     @Throws(FretronException::class)
     fun updateVehicle(id: String, vehicle: Vehicle): Vehicle {
         if (id.isEmpty()) throw FretronException("Invalid vehicle id")
-        else if (vehicle.getRegistrationNumber() == null || vehicle.getChassisType() == null) {
+        else if (vehicle.registrationNumber == null || vehicle.chassisType == null) {
             throw FretronException("Either Registration Or Chassis Number is not provided")
         }
         val vehicleFromDB = vehicleRepository.getVehicle(id)
-        vehicleFromDB?.getUuid() ?: throw ResourceNotFoundException("Vehicle not found at id : $id")
+        vehicleFromDB?.uuid ?: throw ResourceNotFoundException("Vehicle not found at id : $id")
         return vehicleRepository.updateVehicle(id, vehicle)
     }
 

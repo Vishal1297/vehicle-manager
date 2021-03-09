@@ -7,7 +7,6 @@ import com.mongodb.MongoClient
 import com.mongodb.client.MongoDatabase
 import org.codehaus.jackson.map.ObjectMapper
 import org.junit.After
-import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test

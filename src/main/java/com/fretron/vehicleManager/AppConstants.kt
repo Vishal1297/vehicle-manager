@@ -14,7 +14,7 @@ object AppConstants {
     const val SERVER_PORT = 8080
 
     //  Vehicle Resource
-    const val BASE_URL = "/vehicles/v1"
+    const val BASE_URL = "/vehicle/v1"
     const val VEHICLE = "/vehicle"
     const val VEHICLES = "/vehicles"
 

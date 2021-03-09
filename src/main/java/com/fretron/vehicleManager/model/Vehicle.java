@@ -5,29 +5,79 @@
  */
 package com.fretron.vehicleManager.model;
 
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
 import org.apache.avro.specific.SpecificData;
 
-@SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Vehicle extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-    public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Vehicle\",\"namespace\":\"com.fretron.vehicleManager.model\",\"fields\":[{\"name\":\"uuid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"registrationNumber\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"driverName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"bodyType\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"chassisType\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"carryingCapacity\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
     private static final long serialVersionUID = -6905362567349263248L;
-    private static final org.apache.avro.io.DatumWriter
-            WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);
-    private static final org.apache.avro.io.DatumReader
-            READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);
-    @Deprecated
-    public java.lang.String uuid;
-    @Deprecated
-    public java.lang.String registrationNumber;
-    @Deprecated
-    public java.lang.String driverName;
-    @Deprecated
-    public java.lang.String bodyType;
-    @Deprecated
-    public java.lang.String chassisType;
-    @Deprecated
-    public java.lang.String carryingCapacity;
+    public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Vehicle\",\"namespace\":\"com.fretron.vehicleManager.model\",\"fields\":[{\"name\":\"uuid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"registrationNumber\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"driverName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"bodyType\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"chassisType\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"carryingCapacity\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
+
+    public static org.apache.avro.Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
+    private static SpecificData MODEL$ = new SpecificData();
+
+    private static final BinaryMessageEncoder<Vehicle> ENCODER =
+            new BinaryMessageEncoder<Vehicle>(MODEL$, SCHEMA$);
+
+    private static final BinaryMessageDecoder<Vehicle> DECODER =
+            new BinaryMessageDecoder<Vehicle>(MODEL$, SCHEMA$);
+
+    /**
+     * Return the BinaryMessageEncoder instance used by this class.
+     * @return the message encoder used by this class
+     */
+    public static BinaryMessageEncoder<Vehicle> getEncoder() {
+        return ENCODER;
+    }
+
+    /**
+     * Return the BinaryMessageDecoder instance used by this class.
+     * @return the message decoder used by this class
+     */
+    public static BinaryMessageDecoder<Vehicle> getDecoder() {
+        return DECODER;
+    }
+
+    /**
+     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
+     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+     */
+    public static BinaryMessageDecoder<Vehicle> createDecoder(SchemaStore resolver) {
+        return new BinaryMessageDecoder<Vehicle>(MODEL$, SCHEMA$, resolver);
+    }
+
+    /**
+     * Serializes this Vehicle to a ByteBuffer.
+     * @return a buffer holding the serialized data for this instance
+     * @throws java.io.IOException if this instance could not be serialized
+     */
+    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+        return ENCODER.encode(this);
+    }
+
+    /**
+     * Deserializes a Vehicle from a ByteBuffer.
+     * @param b a byte buffer holding serialized data for an instance of this class
+     * @return a Vehicle instance decoded from the given buffer
+     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
+     */
+    public static Vehicle fromByteBuffer(
+            java.nio.ByteBuffer b) throws java.io.IOException {
+        return DECODER.decode(b);
+    }
+
+    private java.lang.String uuid;
+    private java.lang.String registrationNumber;
+    private java.lang.String driverName;
+    private java.lang.String bodyType;
+    private java.lang.String chassisType;
+    private java.lang.String carryingCapacity;
 
     /**
      * Default constructor.  Note that this does not initialize fields
@@ -39,13 +89,12 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * All-args constructor.
-     *
-     * @param uuid               The new value for uuid
+     * @param uuid The new value for uuid
      * @param registrationNumber The new value for registrationNumber
-     * @param driverName         The new value for driverName
-     * @param bodyType           The new value for bodyType
-     * @param chassisType        The new value for chassisType
-     * @param carryingCapacity   The new value for carryingCapacity
+     * @param driverName The new value for driverName
+     * @param bodyType The new value for bodyType
+     * @param chassisType The new value for chassisType
+     * @param carryingCapacity The new value for carryingCapacity
      */
     public Vehicle(java.lang.String uuid, java.lang.String registrationNumber, java.lang.String driverName, java.lang.String bodyType, java.lang.String chassisType, java.lang.String carryingCapacity) {
         this.uuid = uuid;
@@ -56,37 +105,8 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
         this.carryingCapacity = carryingCapacity;
     }
 
-    public static org.apache.avro.Schema getClassSchema() {
-        return SCHEMA$;
-    }
-
-    /**
-     * Creates a new Vehicle RecordBuilder.
-     *
-     * @return A new Vehicle RecordBuilder
-     */
-    public static com.fretron.vehicleManager.model.Vehicle.Builder newBuilder() {
-        return new com.fretron.vehicleManager.model.Vehicle.Builder();
-    }
-
-    /**
-     * Creates a new Vehicle RecordBuilder by copying an existing Builder.
-     *
-     * @param other The existing builder to copy.
-     * @return A new Vehicle RecordBuilder
-     */
-    public static com.fretron.vehicleManager.model.Vehicle.Builder newBuilder(com.fretron.vehicleManager.model.Vehicle.Builder other) {
-        return new com.fretron.vehicleManager.model.Vehicle.Builder(other);
-    }
-
-    /**
-     * Creates a new Vehicle RecordBuilder by copying an existing Vehicle instance.
-     *
-     * @param other The existing instance to copy.
-     * @return A new Vehicle RecordBuilder
-     */
-    public static com.fretron.vehicleManager.model.Vehicle.Builder newBuilder(com.fretron.vehicleManager.model.Vehicle other) {
-        return new com.fretron.vehicleManager.model.Vehicle.Builder(other);
+    public org.apache.avro.specific.SpecificData getSpecificData() {
+        return MODEL$;
     }
 
     public org.apache.avro.Schema getSchema() {
@@ -109,7 +129,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
             case 5:
                 return carryingCapacity;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
@@ -118,40 +138,39 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
     public void put(int field$, java.lang.Object value$) {
         switch (field$) {
             case 0:
-                uuid = (java.lang.String) value$;
+                uuid = value$ != null ? value$.toString() : null;
                 break;
             case 1:
-                registrationNumber = (java.lang.String) value$;
+                registrationNumber = value$ != null ? value$.toString() : null;
                 break;
             case 2:
-                driverName = (java.lang.String) value$;
+                driverName = value$ != null ? value$.toString() : null;
                 break;
             case 3:
-                bodyType = (java.lang.String) value$;
+                bodyType = value$ != null ? value$.toString() : null;
                 break;
             case 4:
-                chassisType = (java.lang.String) value$;
+                chassisType = value$ != null ? value$.toString() : null;
                 break;
             case 5:
-                carryingCapacity = (java.lang.String) value$;
+                carryingCapacity = value$ != null ? value$.toString() : null;
                 break;
             default:
-                throw new org.apache.avro.AvroRuntimeException("Bad index");
+                throw new IndexOutOfBoundsException("Invalid index: " + field$);
         }
     }
 
     /**
      * Gets the value of the 'uuid' field.
-     *
      * @return The value of the 'uuid' field.
      */
     public java.lang.String getUuid() {
         return uuid;
     }
 
+
     /**
      * Sets the value of the 'uuid' field.
-     *
      * @param value the value to set.
      */
     public void setUuid(java.lang.String value) {
@@ -160,16 +179,15 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the value of the 'registrationNumber' field.
-     *
      * @return The value of the 'registrationNumber' field.
      */
     public java.lang.String getRegistrationNumber() {
         return registrationNumber;
     }
 
+
     /**
      * Sets the value of the 'registrationNumber' field.
-     *
      * @param value the value to set.
      */
     public void setRegistrationNumber(java.lang.String value) {
@@ -178,16 +196,15 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the value of the 'driverName' field.
-     *
      * @return The value of the 'driverName' field.
      */
     public java.lang.String getDriverName() {
         return driverName;
     }
 
+
     /**
      * Sets the value of the 'driverName' field.
-     *
      * @param value the value to set.
      */
     public void setDriverName(java.lang.String value) {
@@ -196,16 +213,15 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the value of the 'bodyType' field.
-     *
      * @return The value of the 'bodyType' field.
      */
     public java.lang.String getBodyType() {
         return bodyType;
     }
 
+
     /**
      * Sets the value of the 'bodyType' field.
-     *
      * @param value the value to set.
      */
     public void setBodyType(java.lang.String value) {
@@ -214,16 +230,15 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the value of the 'chassisType' field.
-     *
      * @return The value of the 'chassisType' field.
      */
     public java.lang.String getChassisType() {
         return chassisType;
     }
 
+
     /**
      * Sets the value of the 'chassisType' field.
-     *
      * @param value the value to set.
      */
     public void setChassisType(java.lang.String value) {
@@ -232,37 +247,59 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the value of the 'carryingCapacity' field.
-     *
      * @return The value of the 'carryingCapacity' field.
      */
     public java.lang.String getCarryingCapacity() {
         return carryingCapacity;
     }
 
+
     /**
      * Sets the value of the 'carryingCapacity' field.
-     *
      * @param value the value to set.
      */
     public void setCarryingCapacity(java.lang.String value) {
         this.carryingCapacity = value;
     }
 
-    @Override
-    public void writeExternal(java.io.ObjectOutput out)
-            throws java.io.IOException {
-        WRITER$.write(this, SpecificData.getEncoder(out));
+    /**
+     * Creates a new Vehicle RecordBuilder.
+     * @return A new Vehicle RecordBuilder
+     */
+    public static com.fretron.vehicleManager.model.Vehicle.Builder newBuilder() {
+        return new com.fretron.vehicleManager.model.Vehicle.Builder();
     }
 
-    @Override
-    public void readExternal(java.io.ObjectInput in)
-            throws java.io.IOException {
-        READER$.read(this, SpecificData.getDecoder(in));
+    /**
+     * Creates a new Vehicle RecordBuilder by copying an existing Builder.
+     * @param other The existing builder to copy.
+     * @return A new Vehicle RecordBuilder
+     */
+    public static com.fretron.vehicleManager.model.Vehicle.Builder newBuilder(com.fretron.vehicleManager.model.Vehicle.Builder other) {
+        if (other == null) {
+            return new com.fretron.vehicleManager.model.Vehicle.Builder();
+        } else {
+            return new com.fretron.vehicleManager.model.Vehicle.Builder(other);
+        }
+    }
+
+    /**
+     * Creates a new Vehicle RecordBuilder by copying an existing Vehicle instance.
+     * @param other The existing instance to copy.
+     * @return A new Vehicle RecordBuilder
+     */
+    public static com.fretron.vehicleManager.model.Vehicle.Builder newBuilder(com.fretron.vehicleManager.model.Vehicle other) {
+        if (other == null) {
+            return new com.fretron.vehicleManager.model.Vehicle.Builder();
+        } else {
+            return new com.fretron.vehicleManager.model.Vehicle.Builder(other);
+        }
     }
 
     /**
      * RecordBuilder for Vehicle instances.
      */
+    @org.apache.avro.specific.AvroGenerated
     public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Vehicle>
             implements org.apache.avro.data.RecordBuilder<Vehicle> {
 
@@ -273,49 +310,45 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
         private java.lang.String chassisType;
         private java.lang.String carryingCapacity;
 
-        /**
-         * Creates a new Builder
-         */
+        /** Creates a new Builder */
         private Builder() {
             super(SCHEMA$);
         }
 
         /**
          * Creates a Builder by copying an existing Builder.
-         *
          * @param other The existing Builder to copy.
          */
         private Builder(com.fretron.vehicleManager.model.Vehicle.Builder other) {
             super(other);
             if (isValidValue(fields()[0], other.uuid)) {
                 this.uuid = data().deepCopy(fields()[0].schema(), other.uuid);
-                fieldSetFlags()[0] = true;
+                fieldSetFlags()[0] = other.fieldSetFlags()[0];
             }
             if (isValidValue(fields()[1], other.registrationNumber)) {
                 this.registrationNumber = data().deepCopy(fields()[1].schema(), other.registrationNumber);
-                fieldSetFlags()[1] = true;
+                fieldSetFlags()[1] = other.fieldSetFlags()[1];
             }
             if (isValidValue(fields()[2], other.driverName)) {
                 this.driverName = data().deepCopy(fields()[2].schema(), other.driverName);
-                fieldSetFlags()[2] = true;
+                fieldSetFlags()[2] = other.fieldSetFlags()[2];
             }
             if (isValidValue(fields()[3], other.bodyType)) {
                 this.bodyType = data().deepCopy(fields()[3].schema(), other.bodyType);
-                fieldSetFlags()[3] = true;
+                fieldSetFlags()[3] = other.fieldSetFlags()[3];
             }
             if (isValidValue(fields()[4], other.chassisType)) {
                 this.chassisType = data().deepCopy(fields()[4].schema(), other.chassisType);
-                fieldSetFlags()[4] = true;
+                fieldSetFlags()[4] = other.fieldSetFlags()[4];
             }
             if (isValidValue(fields()[5], other.carryingCapacity)) {
                 this.carryingCapacity = data().deepCopy(fields()[5].schema(), other.carryingCapacity);
-                fieldSetFlags()[5] = true;
+                fieldSetFlags()[5] = other.fieldSetFlags()[5];
             }
         }
 
         /**
          * Creates a Builder by copying an existing Vehicle instance
-         *
          * @param other The existing instance to copy.
          */
         private Builder(com.fretron.vehicleManager.model.Vehicle other) {
@@ -348,16 +381,15 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Gets the value of the 'uuid' field.
-         *
          * @return The value.
          */
         public java.lang.String getUuid() {
             return uuid;
         }
 
+
         /**
          * Sets the value of the 'uuid' field.
-         *
          * @param value The value of 'uuid'.
          * @return This builder.
          */
@@ -370,7 +402,6 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Checks whether the 'uuid' field has been set.
-         *
          * @return True if the 'uuid' field has been set, false otherwise.
          */
         public boolean hasUuid() {
@@ -380,7 +411,6 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Clears the value of the 'uuid' field.
-         *
          * @return This builder.
          */
         public com.fretron.vehicleManager.model.Vehicle.Builder clearUuid() {
@@ -391,16 +421,15 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Gets the value of the 'registrationNumber' field.
-         *
          * @return The value.
          */
         public java.lang.String getRegistrationNumber() {
             return registrationNumber;
         }
 
+
         /**
          * Sets the value of the 'registrationNumber' field.
-         *
          * @param value The value of 'registrationNumber'.
          * @return This builder.
          */
@@ -413,7 +442,6 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Checks whether the 'registrationNumber' field has been set.
-         *
          * @return True if the 'registrationNumber' field has been set, false otherwise.
          */
         public boolean hasRegistrationNumber() {
@@ -423,7 +451,6 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Clears the value of the 'registrationNumber' field.
-         *
          * @return This builder.
          */
         public com.fretron.vehicleManager.model.Vehicle.Builder clearRegistrationNumber() {
@@ -434,16 +461,15 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Gets the value of the 'driverName' field.
-         *
          * @return The value.
          */
         public java.lang.String getDriverName() {
             return driverName;
         }
 
+
         /**
          * Sets the value of the 'driverName' field.
-         *
          * @param value The value of 'driverName'.
          * @return This builder.
          */
@@ -456,7 +482,6 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Checks whether the 'driverName' field has been set.
-         *
          * @return True if the 'driverName' field has been set, false otherwise.
          */
         public boolean hasDriverName() {
@@ -466,7 +491,6 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Clears the value of the 'driverName' field.
-         *
          * @return This builder.
          */
         public com.fretron.vehicleManager.model.Vehicle.Builder clearDriverName() {
@@ -477,16 +501,15 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Gets the value of the 'bodyType' field.
-         *
          * @return The value.
          */
         public java.lang.String getBodyType() {
             return bodyType;
         }
 
+
         /**
          * Sets the value of the 'bodyType' field.
-         *
          * @param value The value of 'bodyType'.
          * @return This builder.
          */
@@ -499,7 +522,6 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Checks whether the 'bodyType' field has been set.
-         *
          * @return True if the 'bodyType' field has been set, false otherwise.
          */
         public boolean hasBodyType() {
@@ -509,7 +531,6 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Clears the value of the 'bodyType' field.
-         *
          * @return This builder.
          */
         public com.fretron.vehicleManager.model.Vehicle.Builder clearBodyType() {
@@ -520,16 +541,15 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Gets the value of the 'chassisType' field.
-         *
          * @return The value.
          */
         public java.lang.String getChassisType() {
             return chassisType;
         }
 
+
         /**
          * Sets the value of the 'chassisType' field.
-         *
          * @param value The value of 'chassisType'.
          * @return This builder.
          */
@@ -542,7 +562,6 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Checks whether the 'chassisType' field has been set.
-         *
          * @return True if the 'chassisType' field has been set, false otherwise.
          */
         public boolean hasChassisType() {
@@ -552,7 +571,6 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Clears the value of the 'chassisType' field.
-         *
          * @return This builder.
          */
         public com.fretron.vehicleManager.model.Vehicle.Builder clearChassisType() {
@@ -563,16 +581,15 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Gets the value of the 'carryingCapacity' field.
-         *
          * @return The value.
          */
         public java.lang.String getCarryingCapacity() {
             return carryingCapacity;
         }
 
+
         /**
          * Sets the value of the 'carryingCapacity' field.
-         *
          * @param value The value of 'carryingCapacity'.
          * @return This builder.
          */
@@ -585,7 +602,6 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Checks whether the 'carryingCapacity' field has been set.
-         *
          * @return True if the 'carryingCapacity' field has been set, false otherwise.
          */
         public boolean hasCarryingCapacity() {
@@ -595,7 +611,6 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Clears the value of the 'carryingCapacity' field.
-         *
          * @return This builder.
          */
         public com.fretron.vehicleManager.model.Vehicle.Builder clearCarryingCapacity() {
@@ -605,6 +620,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public Vehicle build() {
             try {
                 Vehicle record = new Vehicle();
@@ -615,10 +631,210 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
                 record.chassisType = fieldSetFlags()[4] ? this.chassisType : (java.lang.String) defaultValue(fields()[4]);
                 record.carryingCapacity = fieldSetFlags()[5] ? this.carryingCapacity : (java.lang.String) defaultValue(fields()[5]);
                 return record;
-            } catch (Exception e) {
+            } catch (org.apache.avro.AvroMissingFieldException e) {
+                throw e;
+            } catch (java.lang.Exception e) {
                 throw new org.apache.avro.AvroRuntimeException(e);
             }
         }
     }
 
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumWriter<Vehicle>
+            WRITER$ = (org.apache.avro.io.DatumWriter<Vehicle>) MODEL$.createDatumWriter(SCHEMA$);
+
+    @Override
+    public void writeExternal(java.io.ObjectOutput out)
+            throws java.io.IOException {
+        WRITER$.write(this, SpecificData.getEncoder(out));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static final org.apache.avro.io.DatumReader<Vehicle>
+            READER$ = (org.apache.avro.io.DatumReader<Vehicle>) MODEL$.createDatumReader(SCHEMA$);
+
+    @Override
+    public void readExternal(java.io.ObjectInput in)
+            throws java.io.IOException {
+        READER$.read(this, SpecificData.getDecoder(in));
+    }
+
+    @Override
+    protected boolean hasCustomCoders() {
+        return true;
+    }
+
+    @Override
+    public void customEncode(org.apache.avro.io.Encoder out)
+            throws java.io.IOException {
+        if (this.uuid == null) {
+            out.writeIndex(0);
+            out.writeNull();
+        } else {
+            out.writeIndex(1);
+            out.writeString(this.uuid);
+        }
+
+        if (this.registrationNumber == null) {
+            out.writeIndex(0);
+            out.writeNull();
+        } else {
+            out.writeIndex(1);
+            out.writeString(this.registrationNumber);
+        }
+
+        if (this.driverName == null) {
+            out.writeIndex(0);
+            out.writeNull();
+        } else {
+            out.writeIndex(1);
+            out.writeString(this.driverName);
+        }
+
+        if (this.bodyType == null) {
+            out.writeIndex(0);
+            out.writeNull();
+        } else {
+            out.writeIndex(1);
+            out.writeString(this.bodyType);
+        }
+
+        if (this.chassisType == null) {
+            out.writeIndex(0);
+            out.writeNull();
+        } else {
+            out.writeIndex(1);
+            out.writeString(this.chassisType);
+        }
+
+        if (this.carryingCapacity == null) {
+            out.writeIndex(0);
+            out.writeNull();
+        } else {
+            out.writeIndex(1);
+            out.writeString(this.carryingCapacity);
+        }
+
+    }
+
+    @Override
+    public void customDecode(org.apache.avro.io.ResolvingDecoder in)
+            throws java.io.IOException {
+        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+        if (fieldOrder == null) {
+            if (in.readIndex() != 1) {
+                in.readNull();
+                this.uuid = null;
+            } else {
+                this.uuid = in.readString();
+            }
+
+            if (in.readIndex() != 1) {
+                in.readNull();
+                this.registrationNumber = null;
+            } else {
+                this.registrationNumber = in.readString();
+            }
+
+            if (in.readIndex() != 1) {
+                in.readNull();
+                this.driverName = null;
+            } else {
+                this.driverName = in.readString();
+            }
+
+            if (in.readIndex() != 1) {
+                in.readNull();
+                this.bodyType = null;
+            } else {
+                this.bodyType = in.readString();
+            }
+
+            if (in.readIndex() != 1) {
+                in.readNull();
+                this.chassisType = null;
+            } else {
+                this.chassisType = in.readString();
+            }
+
+            if (in.readIndex() != 1) {
+                in.readNull();
+                this.carryingCapacity = null;
+            } else {
+                this.carryingCapacity = in.readString();
+            }
+
+        } else {
+            for (int i = 0; i < 6; i++) {
+                switch (fieldOrder[i].pos()) {
+                    case 0:
+                        if (in.readIndex() != 1) {
+                            in.readNull();
+                            this.uuid = null;
+                        } else {
+                            this.uuid = in.readString();
+                        }
+                        break;
+
+                    case 1:
+                        if (in.readIndex() != 1) {
+                            in.readNull();
+                            this.registrationNumber = null;
+                        } else {
+                            this.registrationNumber = in.readString();
+                        }
+                        break;
+
+                    case 2:
+                        if (in.readIndex() != 1) {
+                            in.readNull();
+                            this.driverName = null;
+                        } else {
+                            this.driverName = in.readString();
+                        }
+                        break;
+
+                    case 3:
+                        if (in.readIndex() != 1) {
+                            in.readNull();
+                            this.bodyType = null;
+                        } else {
+                            this.bodyType = in.readString();
+                        }
+                        break;
+
+                    case 4:
+                        if (in.readIndex() != 1) {
+                            in.readNull();
+                            this.chassisType = null;
+                        } else {
+                            this.chassisType = in.readString();
+                        }
+                        break;
+
+                    case 5:
+                        if (in.readIndex() != 1) {
+                            in.readNull();
+                            this.carryingCapacity = null;
+                        } else {
+                            this.carryingCapacity = in.readString();
+                        }
+                        break;
+
+                    default:
+                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
+                }
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+

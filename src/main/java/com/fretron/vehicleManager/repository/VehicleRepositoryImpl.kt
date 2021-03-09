@@ -53,7 +53,7 @@ class VehicleRepositoryImpl
                 val json = JSON.serialize(document)
                 return objectMapper.readValue(json, Vehicle::class.java)
             }
-        }catch (ex : Exception){
+        } catch (ex: Exception) {
             throw MongoDbException("Vehicle not found id :: $id")
         }
         return null
@@ -71,7 +71,7 @@ class VehicleRepositoryImpl
                 vehicles.add(vehicle)
             }
             return vehicles
-        }catch (ex: Exception){
+        } catch (ex: Exception) {
             throw MongoDbException("Unable to get all vehicles")
         }
     }
@@ -83,11 +83,15 @@ class VehicleRepositoryImpl
             query["_id"] = id
             val personDocument = Document.parse(vehicle.toString())
             val update: Bson = Document("\$set", personDocument)
-            val updatedVehicleDocument = collection.findOneAndUpdate(query, update, FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER))
+            val updatedVehicleDocument = collection.findOneAndUpdate(
+                query,
+                update,
+                FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER)
+            )
             updatedVehicleDocument ?: throw MongoDbException("Vehicle Not Updated")
             val json = JSON.serialize(updatedVehicleDocument)
             return objectMapper.readValue(json, Vehicle::class.java)
-        }catch (ex : Exception){
+        } catch (ex: Exception) {
             throw MongoDbException("Unable to update vehicle at id $id")
         }
     }
@@ -99,7 +103,7 @@ class VehicleRepositoryImpl
             deletedVehicleDocument ?: throw MongoDbException("Vehicle Not Deleted")
             val json = JSON.serialize(deletedVehicleDocument)
             return objectMapper.readValue(json, Vehicle::class.java)
-        }catch (ex : Exception) {
+        } catch (ex: Exception) {
             throw MongoDbException("Unable to delete vehicle at id $id")
         }
     }
