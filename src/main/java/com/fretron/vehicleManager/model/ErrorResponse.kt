@@ -6,7 +6,7 @@ class ErrorResponse {
     private var timeStamp: String? = null
     private var exception: String? = null
 
-    constructor() {}
+    constructor()
 
     constructor(errorCode: String?, errorMessage: String?, timeStamp: String?, exception: String?) {
         this.errorCode = errorCode

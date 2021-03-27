@@ -1,5 +1,6 @@
 package com.fretron.vehicleManager.repository
 
+import com.fretron.vehicleManager.AppConstants.ERROR_IN_DB
 import com.fretron.vehicleManager.AppConstants.KEY_VEHICLE_COLLECTION_NAME
 import com.fretron.vehicleManager.exceptions.MongoDbException
 import com.fretron.vehicleManager.model.Vehicle
@@ -10,6 +11,7 @@ import com.mongodb.client.model.Filters
 import com.mongodb.client.model.FindOneAndUpdateOptions
 import com.mongodb.client.model.ReturnDocument
 import com.mongodb.util.JSON
+import org.apache.logging.log4j.LogManager
 import org.bson.Document
 import org.bson.conversions.Bson
 import org.codehaus.jackson.map.ObjectMapper
@@ -32,13 +34,18 @@ class VehicleRepositoryImpl
 
     @Throws(MongoDbException::class)
     override fun createVehicle(vehicle: Vehicle): Vehicle {
-        val document = Document.parse(vehicle.toString())
-        document["_id"] = vehicle.getUuid()
-        if (document == null) {
-            throw MongoDbException("Vehicle not created at id ${vehicle.getUuid()}")
+        try {
+            val document = Document.parse(vehicle.toString())
+            document["_id"] = vehicle.uuid
+            if (document == null) {
+                throw MongoDbException("Vehicle not created at id ${vehicle.uuid}")
+            }
+            collection.insertOne(document)
+            return vehicle
+        } catch (e: Exception) {
+            logger.error("Error while adding vehicle with id : ${vehicle.uuid} ${e.message}")
+            throw MongoDbException(ERROR_IN_DB)
         }
-        collection.insertOne(document)
-        return vehicle
     }
 
     @Throws(MongoDbException::class)
@@ -54,6 +61,7 @@ class VehicleRepositoryImpl
                 return objectMapper.readValue(json, Vehicle::class.java)
             }
         } catch (ex: Exception) {
+            logger.error("Error while adding vehicle with id : $id ${ex.message}")
             throw MongoDbException("Vehicle not found id :: $id")
         }
         return null
@@ -66,13 +74,15 @@ class VehicleRepositoryImpl
             val mongoCursor = collection.find().iterator()
             while (mongoCursor.hasNext()) {
                 val document = mongoCursor.next()
+                document.remove("_id")
                 val json = JSON.serialize(document)
                 val vehicle = objectMapper.readValue(json, Vehicle::class.java)
                 vehicles.add(vehicle)
             }
             return vehicles
         } catch (ex: Exception) {
-            throw MongoDbException("Unable to get all vehicles")
+            logger.error("Error while fetching all vehicles ${ex.message}")
+            throw MongoDbException("Unable to get all vehicles from DB")
         }
     }
 
@@ -92,6 +102,7 @@ class VehicleRepositoryImpl
             val json = JSON.serialize(updatedVehicleDocument)
             return objectMapper.readValue(json, Vehicle::class.java)
         } catch (ex: Exception) {
+            logger.error("Error while fetching all vehicles ${ex.message}")
             throw MongoDbException("Unable to update vehicle at id $id")
         }
     }
@@ -101,11 +112,17 @@ class VehicleRepositoryImpl
         try {
             val deletedVehicleDocument = collection.findOneAndDelete(Filters.eq("_id", id))
             deletedVehicleDocument ?: throw MongoDbException("Vehicle Not Deleted")
+            deletedVehicleDocument.remove("_id")
             val json = JSON.serialize(deletedVehicleDocument)
             return objectMapper.readValue(json, Vehicle::class.java)
         } catch (ex: Exception) {
+            logger.error("Error while deleting vehicle with id $id ${ex.message}")
             throw MongoDbException("Unable to delete vehicle at id $id")
         }
+    }
+
+    companion object {
+        private val logger = LogManager.getLogger()
     }
 
 }

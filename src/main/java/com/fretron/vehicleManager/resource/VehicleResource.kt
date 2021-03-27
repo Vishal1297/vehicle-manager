@@ -2,8 +2,10 @@ package com.fretron.vehicleManager.resource
 
 import com.fretron.vehicleManager.AppConstants
 import com.fretron.vehicleManager.exceptions.MappingException
+import com.fretron.vehicleManager.exceptions.ResourceNotFoundException
 import com.fretron.vehicleManager.model.Vehicle
 import com.fretron.vehicleManager.service.VehicleServiceImpl
+import org.apache.logging.log4j.LogManager
 import org.codehaus.jackson.map.ObjectMapper
 import javax.inject.Inject
 import javax.ws.rs.*
@@ -39,6 +41,7 @@ class VehicleResource @Inject constructor(
     @Produces(MediaType.APPLICATION_JSON)
     fun getVehicle(@QueryParam(AppConstants.UUID) uuid: String): Response {
         val vehicle = vehicleServiceImpl.getVehicle(uuid)
+            ?: ResourceNotFoundException("Vehicle ${AppConstants.NOT_FOUND} with Id : $uuid")
         return Response.ok(vehicle.toString()).build()
     }
 
@@ -63,8 +66,12 @@ class VehicleResource @Inject constructor(
     @Path(AppConstants.VEHICLE)
     @Produces(MediaType.APPLICATION_JSON)
     fun removeVehicle(@QueryParam(AppConstants.UUID) uuid: String): Response {
+        logger.info("Remove vehicle with id $uuid called /vehicle/v1/vehicle")
         val vehicle = vehicleServiceImpl.deleteVehicle(uuid)
         return Response.ok(vehicle.toString()).build()
     }
 
+    companion object{
+        private val logger = LogManager.getLogger()
+    }
 }
