@@ -1,13 +1,19 @@
 package com.fretron.vehicleManager.model
 
-class ErrorResponse(
-    private var errorCode: String?,
-    private var errorMessage: String?,
-    private var timeStamp: String?,
-    private var exception: String?
-) {
+class ErrorResponse {
+    private var errorCode: String? = null
+    private var errorMessage: String? = null
+    private var timeStamp: String? = null
+    private var exception: String? = null
 
-    constructor() : this(null, null, null, null)
+    constructor()
+
+    constructor(errorCode: String?, errorMessage: String?, timeStamp: String?, exception: String?) {
+        this.errorCode = errorCode
+        this.errorMessage = errorMessage
+        this.timeStamp = timeStamp
+        this.exception = exception
+    }
 
     override fun toString(): String {
         return "ErrorResponse{" +

@@ -19,7 +19,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
         return SCHEMA$;
     }
 
-    private static SpecificData MODEL$ = new SpecificData();
+    private static final SpecificData MODEL$ = new SpecificData();
 
     private static final BinaryMessageEncoder<Vehicle> ENCODER =
             new BinaryMessageEncoder<Vehicle>(MODEL$, SCHEMA$);
@@ -29,6 +29,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Return the BinaryMessageEncoder instance used by this class.
+     *
      * @return the message encoder used by this class
      */
     public static BinaryMessageEncoder<Vehicle> getEncoder() {
@@ -37,6 +38,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Return the BinaryMessageDecoder instance used by this class.
+     *
      * @return the message decoder used by this class
      */
     public static BinaryMessageDecoder<Vehicle> getDecoder() {
@@ -45,6 +47,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
+     *
      * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
      * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
      */
@@ -54,6 +57,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Serializes this Vehicle to a ByteBuffer.
+     *
      * @return a buffer holding the serialized data for this instance
      * @throws java.io.IOException if this instance could not be serialized
      */
@@ -63,6 +67,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Deserializes a Vehicle from a ByteBuffer.
+     *
      * @param b a byte buffer holding serialized data for an instance of this class
      * @return a Vehicle instance decoded from the given buffer
      * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
@@ -89,12 +94,13 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * All-args constructor.
-     * @param uuid The new value for uuid
+     *
+     * @param uuid               The new value for uuid
      * @param registrationNumber The new value for registrationNumber
-     * @param driverName The new value for driverName
-     * @param bodyType The new value for bodyType
-     * @param chassisType The new value for chassisType
-     * @param carryingCapacity The new value for carryingCapacity
+     * @param driverName         The new value for driverName
+     * @param bodyType           The new value for bodyType
+     * @param chassisType        The new value for chassisType
+     * @param carryingCapacity   The new value for carryingCapacity
      */
     public Vehicle(java.lang.String uuid, java.lang.String registrationNumber, java.lang.String driverName, java.lang.String bodyType, java.lang.String chassisType, java.lang.String carryingCapacity) {
         this.uuid = uuid;
@@ -162,6 +168,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the value of the 'uuid' field.
+     *
      * @return The value of the 'uuid' field.
      */
     public java.lang.String getUuid() {
@@ -171,6 +178,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Sets the value of the 'uuid' field.
+     *
      * @param value the value to set.
      */
     public void setUuid(java.lang.String value) {
@@ -179,6 +187,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the value of the 'registrationNumber' field.
+     *
      * @return The value of the 'registrationNumber' field.
      */
     public java.lang.String getRegistrationNumber() {
@@ -188,6 +197,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Sets the value of the 'registrationNumber' field.
+     *
      * @param value the value to set.
      */
     public void setRegistrationNumber(java.lang.String value) {
@@ -196,6 +206,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the value of the 'driverName' field.
+     *
      * @return The value of the 'driverName' field.
      */
     public java.lang.String getDriverName() {
@@ -205,6 +216,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Sets the value of the 'driverName' field.
+     *
      * @param value the value to set.
      */
     public void setDriverName(java.lang.String value) {
@@ -213,6 +225,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the value of the 'bodyType' field.
+     *
      * @return The value of the 'bodyType' field.
      */
     public java.lang.String getBodyType() {
@@ -222,6 +235,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Sets the value of the 'bodyType' field.
+     *
      * @param value the value to set.
      */
     public void setBodyType(java.lang.String value) {
@@ -230,6 +244,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the value of the 'chassisType' field.
+     *
      * @return The value of the 'chassisType' field.
      */
     public java.lang.String getChassisType() {
@@ -239,6 +254,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Sets the value of the 'chassisType' field.
+     *
      * @param value the value to set.
      */
     public void setChassisType(java.lang.String value) {
@@ -247,6 +263,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Gets the value of the 'carryingCapacity' field.
+     *
      * @return The value of the 'carryingCapacity' field.
      */
     public java.lang.String getCarryingCapacity() {
@@ -256,6 +273,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Sets the value of the 'carryingCapacity' field.
+     *
      * @param value the value to set.
      */
     public void setCarryingCapacity(java.lang.String value) {
@@ -264,6 +282,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Creates a new Vehicle RecordBuilder.
+     *
      * @return A new Vehicle RecordBuilder
      */
     public static com.fretron.vehicleManager.model.Vehicle.Builder newBuilder() {
@@ -272,6 +291,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Creates a new Vehicle RecordBuilder by copying an existing Builder.
+     *
      * @param other The existing builder to copy.
      * @return A new Vehicle RecordBuilder
      */
@@ -285,6 +305,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /**
      * Creates a new Vehicle RecordBuilder by copying an existing Vehicle instance.
+     *
      * @param other The existing instance to copy.
      * @return A new Vehicle RecordBuilder
      */
@@ -310,13 +331,16 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
         private java.lang.String chassisType;
         private java.lang.String carryingCapacity;
 
-        /** Creates a new Builder */
+        /**
+         * Creates a new Builder
+         */
         private Builder() {
             super(SCHEMA$);
         }
 
         /**
          * Creates a Builder by copying an existing Builder.
+         *
          * @param other The existing Builder to copy.
          */
         private Builder(com.fretron.vehicleManager.model.Vehicle.Builder other) {
@@ -349,6 +373,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Creates a Builder by copying an existing Vehicle instance
+         *
          * @param other The existing instance to copy.
          */
         private Builder(com.fretron.vehicleManager.model.Vehicle other) {
@@ -381,6 +406,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Gets the value of the 'uuid' field.
+         *
          * @return The value.
          */
         public java.lang.String getUuid() {
@@ -390,6 +416,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Sets the value of the 'uuid' field.
+         *
          * @param value The value of 'uuid'.
          * @return This builder.
          */
@@ -402,6 +429,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Checks whether the 'uuid' field has been set.
+         *
          * @return True if the 'uuid' field has been set, false otherwise.
          */
         public boolean hasUuid() {
@@ -411,6 +439,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Clears the value of the 'uuid' field.
+         *
          * @return This builder.
          */
         public com.fretron.vehicleManager.model.Vehicle.Builder clearUuid() {
@@ -421,6 +450,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Gets the value of the 'registrationNumber' field.
+         *
          * @return The value.
          */
         public java.lang.String getRegistrationNumber() {
@@ -430,6 +460,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Sets the value of the 'registrationNumber' field.
+         *
          * @param value The value of 'registrationNumber'.
          * @return This builder.
          */
@@ -442,6 +473,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Checks whether the 'registrationNumber' field has been set.
+         *
          * @return True if the 'registrationNumber' field has been set, false otherwise.
          */
         public boolean hasRegistrationNumber() {
@@ -451,6 +483,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Clears the value of the 'registrationNumber' field.
+         *
          * @return This builder.
          */
         public com.fretron.vehicleManager.model.Vehicle.Builder clearRegistrationNumber() {
@@ -461,6 +494,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Gets the value of the 'driverName' field.
+         *
          * @return The value.
          */
         public java.lang.String getDriverName() {
@@ -470,6 +504,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Sets the value of the 'driverName' field.
+         *
          * @param value The value of 'driverName'.
          * @return This builder.
          */
@@ -482,6 +517,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Checks whether the 'driverName' field has been set.
+         *
          * @return True if the 'driverName' field has been set, false otherwise.
          */
         public boolean hasDriverName() {
@@ -491,6 +527,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Clears the value of the 'driverName' field.
+         *
          * @return This builder.
          */
         public com.fretron.vehicleManager.model.Vehicle.Builder clearDriverName() {
@@ -501,6 +538,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Gets the value of the 'bodyType' field.
+         *
          * @return The value.
          */
         public java.lang.String getBodyType() {
@@ -510,6 +548,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Sets the value of the 'bodyType' field.
+         *
          * @param value The value of 'bodyType'.
          * @return This builder.
          */
@@ -522,6 +561,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Checks whether the 'bodyType' field has been set.
+         *
          * @return True if the 'bodyType' field has been set, false otherwise.
          */
         public boolean hasBodyType() {
@@ -531,6 +571,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Clears the value of the 'bodyType' field.
+         *
          * @return This builder.
          */
         public com.fretron.vehicleManager.model.Vehicle.Builder clearBodyType() {
@@ -541,6 +582,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Gets the value of the 'chassisType' field.
+         *
          * @return The value.
          */
         public java.lang.String getChassisType() {
@@ -550,6 +592,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Sets the value of the 'chassisType' field.
+         *
          * @param value The value of 'chassisType'.
          * @return This builder.
          */
@@ -562,6 +605,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Checks whether the 'chassisType' field has been set.
+         *
          * @return True if the 'chassisType' field has been set, false otherwise.
          */
         public boolean hasChassisType() {
@@ -571,6 +615,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Clears the value of the 'chassisType' field.
+         *
          * @return This builder.
          */
         public com.fretron.vehicleManager.model.Vehicle.Builder clearChassisType() {
@@ -581,6 +626,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Gets the value of the 'carryingCapacity' field.
+         *
          * @return The value.
          */
         public java.lang.String getCarryingCapacity() {
@@ -590,6 +636,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Sets the value of the 'carryingCapacity' field.
+         *
          * @param value The value of 'carryingCapacity'.
          * @return This builder.
          */
@@ -602,6 +649,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Checks whether the 'carryingCapacity' field has been set.
+         *
          * @return True if the 'carryingCapacity' field has been set, false otherwise.
          */
         public boolean hasCarryingCapacity() {
@@ -611,6 +659,7 @@ public class Vehicle extends org.apache.avro.specific.SpecificRecordBase impleme
 
         /**
          * Clears the value of the 'carryingCapacity' field.
+         *
          * @return This builder.
          */
         public com.fretron.vehicleManager.model.Vehicle.Builder clearCarryingCapacity() {

@@ -8,7 +8,6 @@ import com.fretron.vehicleManager.model.ErrorResponse
 import org.codehaus.jackson.map.ObjectMapper
 import java.time.LocalDateTime
 import javax.inject.Inject
-import javax.ws.rs.NotAllowedException
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
@@ -35,7 +34,7 @@ class FretronExceptionMapper @Inject constructor(
                     )
                 ).build()
             }
-            is NotAllowedException -> {
+            is com.fretron.vehicleManager.exceptions.NotAllowedException -> {
                 return Response.ok().entity(
                     objectMapper.writeValueAsString(
                         ErrorResponse(
@@ -73,7 +72,6 @@ class FretronExceptionMapper @Inject constructor(
             }
 
         }
-
-        return Response.ok().entity("Some error has occurred").build()
+        return Response.ok().entity("Some error has occurred : ${exception?.message}").build()
     }
 }

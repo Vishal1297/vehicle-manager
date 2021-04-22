@@ -5,8 +5,8 @@ object AppConstants {
     //  Common
     const val UUID = "uuid"
     const val ID = "id"
-    const val NOT_FOUND = "NOT FOUND"
-    const val INVALID_REQUEST = "INVALID REQUEST"
+    const val NOT_FOUND = "not found"
+    const val INVALID_REQUEST = "Invalid Request"
     const val KEY_VEHICLE_COLLECTION_NAME = "vehicle"
     const val KEY_SERVER_HOST = "host.url"
     const val KEY_SERVER_PORT = "host.port"
@@ -15,13 +15,14 @@ object AppConstants {
 
     //  Vehicle Resource
     const val BASE_URL = "/vehicle/v1"
-    const val VEHICLE = "/vehicle"
-    const val VEHICLES = "/vehicles"
+    const val VEHICLE = "vehicle"
+    const val VEHICLES = "vehicles"
 
     // MongoDB
     const val DB_COLLECTION_NAME = "vehicle"
     const val DB_HOST = "localhost"
     const val DB_PORT = 27017
+    const val ERROR_IN_DB = "Error in database"
 
 }
 
