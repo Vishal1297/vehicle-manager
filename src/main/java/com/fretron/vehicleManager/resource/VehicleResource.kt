@@ -2,6 +2,7 @@ package com.fretron.vehicleManager.resource
 
 import com.fretron.vehicleManager.AppConstants
 import com.fretron.vehicleManager.exceptions.MappingException
+import com.fretron.vehicleManager.exceptions.ResourceNotFoundException
 import com.fretron.vehicleManager.model.Vehicle
 import com.fretron.vehicleManager.service.VehicleServiceImpl
 import org.codehaus.jackson.map.ObjectMapper
@@ -38,7 +39,7 @@ class VehicleResource @Inject constructor(
     @Path(AppConstants.VEHICLE)
     @Produces(MediaType.APPLICATION_JSON)
     fun getVehicle(@QueryParam(AppConstants.UUID) uuid: String): Response {
-        val vehicle = vehicleServiceImpl.getVehicle(uuid)
+        val vehicle = vehicleServiceImpl.getVehicle(uuid) ?: throw ResourceNotFoundException("Resource Not Found $uuid")
         return Response.ok(vehicle.toString()).build()
     }
 

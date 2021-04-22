@@ -16,7 +16,7 @@ class VehicleServiceImpl
         if (vehicle.registrationNumber == null || vehicle.chassisType == null) {
             throw FretronException("Either Registration or Chassis Number is not provided")
         }
-        vehicle.setUuid(UUID.randomUUID().toString())
+        vehicle.uuid = UUID.randomUUID().toString()
         return vehicleRepository.createVehicle(vehicle)
     }
 
