@@ -29,9 +29,6 @@ out/
 */build
 */bin
 .gradle
-gradlew.bat
-gradlew
-gradle/
 build/
 
 # Ignore Gradle GUI config
