@@ -19,11 +19,12 @@ import javax.ws.rs.core.MediaType
 
 class VehicleResourceShould : JerseyTest() {
 
-    private val baseUrl = AppConstants.BASE_URL
+    private lateinit var baseUrl: String
     private lateinit var uuid: String
     private lateinit var vehicleServiceImpl: VehicleServiceImpl
 
     override fun configure(): Application {
+        baseUrl = AppConstants.BASE_URL
         vehicleServiceImpl = mock()
         val vehicleTestComponent = DaggerVehicleTestComponent.builder().build()
         val config = ResourceConfig()
@@ -37,6 +38,7 @@ class VehicleResourceShould : JerseyTest() {
         whenever(vehicleServiceImpl.createVehicle(any())).thenReturn(TestDataSource.getVehicle())
         val response =
             target("$baseUrl/vehicle").request().post(Entity.entity(vehicleRequest, MediaType.APPLICATION_JSON))
+        assertNotNull(response)
         assertTrue("return_200_after_create_vehicle", response.status == 200)
         val responseJson = JSONObject(response.readEntity(String::class.java))
         uuid = responseJson.get("uuid").toString()
@@ -47,6 +49,7 @@ class VehicleResourceShould : JerseyTest() {
     fun return_200_after_get_vehicle_by_uuid() {
         return_200_after_create_vehicle()
         val response = target("$baseUrl/vehicle").queryParam("uuid", uuid).request().get()
+        assertNotNull(response)
         assertTrue("return_200_after_get_vehicle_by_uuid :: ", response.status == 200)
     }
 
@@ -71,6 +74,7 @@ class VehicleResourceShould : JerseyTest() {
         print("return_200_after_update_vehicle :: $testData")
         val response = target("$baseUrl/vehicle").queryParam("uuid", uuid).request()
             .put(Entity.entity(testData.toString(), MediaType.APPLICATION_JSON))
+        assertNotNull(response)
         assertTrue("return_200_after_update_vehicle", response.status == 200)
     }
 
@@ -81,6 +85,7 @@ class VehicleResourceShould : JerseyTest() {
         val deletedData = TestDataSource.createVehicleRequest()
         println("\nreturn_200_after_delete_vehicle_by_uuid :: $deletedData")
         val response = target("$baseUrl/vehicle").queryParam("uuid", uuid).request().delete()
+        assertNotNull(response)
         assertTrue("return_200_after_delete_device_by_uuid :: ", response.status == 200)
     }
 

@@ -29,6 +29,7 @@ class VehicleRepositoryImpl
     private var collection: MongoCollection<Document>
 
     init {
+        logger.info("Init repo, collection $vehicleCollectionName")
         collection = database.getCollection(vehicleCollectionName)
     }
 
@@ -99,10 +100,12 @@ class VehicleRepositoryImpl
                 FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER)
             )
             updatedVehicleDocument ?: throw MongoDbException("Vehicle Not Updated")
+            updatedVehicleDocument.remove("_id")
             val json = JSON.serialize(updatedVehicleDocument)
             return objectMapper.readValue(json, Vehicle::class.java)
         } catch (ex: Exception) {
-            logger.error("Error while fetching all vehicles ${ex.message}")
+            logger.info(ex.stackTrace)
+            logger.error("Error while updating vehicle by id $id, msg ${ex.message}")
             throw MongoDbException("Unable to update vehicle at id $id")
         }
     }

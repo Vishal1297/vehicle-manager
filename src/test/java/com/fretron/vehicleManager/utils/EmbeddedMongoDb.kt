@@ -30,6 +30,7 @@ class EmbeddedMongoDb {
 
     @Throws(IOException::class)
     fun start() {
+        println("Try to start mongo with port $port")
         val starter: MongodStarter = MongodStarter.getDefaultInstance()
         val executable: MongodExecutable = starter.prepare(
             MongodConfigBuilder()
