@@ -15,6 +15,7 @@ plugins {
     id 'maven-publish'
     id 'org.jetbrains.kotlin.jvm' version '1.6.10'
     id "com.github.davidmc24.gradle.plugin.avro-base" version "1.0.0"
+
 }
 
 apply plugin: 'kotlin-kapt'
@@ -93,6 +94,9 @@ dependencies {
     // Jersey Test
     testImplementation group: 'org.glassfish.jersey.test-framework', name: 'jersey-test-framework-core', version: jerseyVersion
     testImplementation group: 'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-grizzly2', version: jerseyVersion
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
 
     //  kapt Test
     kaptTest "com.google.dagger:dagger-compiler:$daggerVersion"
