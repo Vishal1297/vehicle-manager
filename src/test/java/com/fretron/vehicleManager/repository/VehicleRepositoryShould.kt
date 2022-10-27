@@ -16,17 +16,19 @@ class VehicleRepositoryShould {
 
     private lateinit var embeddedMongoDb: EmbeddedMongoDb
     private lateinit var database: MongoDatabase
-    private val objectMapper = ObjectMapper()
+    private lateinit var objectMapper: ObjectMapper
 
     @Before
     fun configure() {
         startMongoDb()
         val mongoClient = MongoClient("localhost", embeddedMongoDb.port)
         database = mongoClient.getDatabase("vehicle")
+        objectMapper = ObjectMapper()
     }
 
     @After
     fun closeConnections() {
+        println("Try to close mongo connection")
         embeddedMongoDb.stop()
     }
 
@@ -53,7 +55,6 @@ class VehicleRepositoryShould {
         vehicle.setUuid(UUID.randomUUID().toString())
         val vehicleCreated = classUnderTest.createVehicle(vehicle)
         val vehicleFromDb = classUnderTest.getVehicle(vehicleCreated.getUuid())
-        println(vehicleFromDb)
         assertNotNull(vehicleFromDb)
         print(vehicleFromDb.toString())
     }
@@ -72,7 +73,7 @@ class VehicleRepositoryShould {
         val vehicle = TestDataSource.getVehicle()
         vehicle.setUuid(UUID.randomUUID().toString())
         val vehicleCreated = classUnderTest.createVehicle(vehicle)
-        val updatedVehicle = classUnderTest.updateVehicle(vehicleCreated.getUuid(), vehicle)
+        val updatedVehicle = classUnderTest.updateVehicle(vehicleCreated.uuid, vehicle)
         assertNotNull(updatedVehicle)
         print(updatedVehicle.toString())
     }

@@ -32,7 +32,7 @@ class VehicleServiceShould {
         }
         val vehicle = classUnderTest.createVehicle(vehicleToAdd)
         assertNotNull(vehicle)
-        uuid = vehicle.getUuid()
+        uuid = vehicle.uuid
         assertNotNull(uuid)
         verify(vehicleRepository).createVehicle(vehicleToAdd)
     }
